@@ -56,4 +56,9 @@ to run the docker image, run
 docker run -d -p 8080:80 webtest
 ```
 
+## List open ports on Fedora
+
+```
+sudo firewall-cmd --list-ports
+```
 
