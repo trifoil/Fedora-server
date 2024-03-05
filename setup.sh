@@ -33,9 +33,10 @@ systemctl start docker
 # to not need to put sudo for using docker with my administrator user
 
 usermod -aG docker administrator
+usermod -aG docker $USER
+
 
 docker --version
-
 
 
 echo "Installation complete"
