@@ -43,8 +43,6 @@ usermod -aG docker $USER
 
 dnf install docker-compose
 
-
-
 # pull and run the portainer image it needs to be privileged because it is conflicting SELinx
 
 docker volume create portainer_data
