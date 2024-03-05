@@ -14,9 +14,22 @@ dnf update
 dnf install cockpit -y
 systemctl enable --now cockpit.socket
 
-sudo firewall-cmd --permanent --zone=public --add-service=cockpit
-sudo firewall-cmd --reload
+firewall-cmd --permanent --zone=public --add-service=cockpit
+firewall-cmd --reload
 
-# 
+# install and enable docker (start auto at boot)
+
+dnf install docker -y
+systemctl enable docker
+
+systemctl start docker
+
+# to not need to put sudo for using docker with my administrator user
+
+usermod -aG docker administrator
+
+docker --version
+
+
 
 echo "Installation complete"
