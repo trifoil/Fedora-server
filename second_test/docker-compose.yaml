@@ -1,20 +1,34 @@
 version: '3.7'
 
 services:
-  webserver1:
-    image: httpd:alpine
-    container_name: webserver1
-    restart: always
+  apache_php:
+    image: php:apache
+    container_name: apache_php_server
     ports:
-      - "8081:80"
+      - "8080:80"
     volumes:
-      - "./website1:/var/www/html/"
+      - ./php:/var/www/html/
+    restart: always
 
-  webserver2:
-    image: httpd:alpine
-    container_name: webserver2
-    restart: always
-    ports:
-      - "8082:80"
-    volumes:
-      - "./website2:/var/www/html/"
+
+
+# version: '3.7'
+
+# services:
+#   webserver1:
+#     image: httpd:alpine
+#     container_name: webserver1
+#     restart: always
+#     ports:
+#       - "8081:80"
+#     volumes:
+#       - ""
+
+#   webserver2:
+#     image: httpd:alpine
+#     container_name: webserver2
+#     restart: always
+#     ports:
+#       - "8082:80"
+#     volumes:
+#       - "./website2:/var/www/html/"
