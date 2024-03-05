@@ -19,7 +19,7 @@ firewall-cmd --reload
 
 echo You can now connect at :
 
-ip a
+ip a | grep -E 'inet\s' | grep -v '127.0.0.1' | awk '{print $2}' | awk -F/ '{print $1}'
 
 # install and enable docker (start auto at boot)
 
