@@ -8,7 +8,7 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - "./website1/:/var/www/html/"
+      - "/website1/:/var/www/html/"
 
   webserver2:
     image: httpd:alpine
@@ -17,6 +17,4 @@ services:
     ports:
       - "8082:80"
     volumes:
-      - "./website2/:/var/www/html/"
-
-
+      - "website2:/var/www/html/"
