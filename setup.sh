@@ -9,6 +9,8 @@ echo "The script will now install your tools"
 
 dnf update
 
+dnf install btop git -y
+
 # configuring cockpit
 
 dnf install cockpit -y
