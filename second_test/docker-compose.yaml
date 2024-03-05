@@ -9,10 +9,8 @@ services:
       - "8081:80"
     volumes:
       - "./website1/:/var/www/html/"
-    networks:
-      - mynetwork
 
-webserver2:
+  webserver2:
     image: httpd:alpine
     container_name: webserver2
     restart: always
@@ -20,6 +18,5 @@ webserver2:
       - "8082:80"
     volumes:
       - "./website2/:/var/www/html/"
-    networks:
-      - mynetwork
+
 
