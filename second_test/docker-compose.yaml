@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   webserver1:
     image: httpd:alpine

@@ -26,7 +26,7 @@ Access portainer on port 9443
 cd Downloads
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server/second_test
-docker compose up -d
+docker-compose up -d
 ```
 
 ## Nginx proxy manager
