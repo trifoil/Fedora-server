@@ -30,9 +30,12 @@ systemctl enable docker
 
 systemctl start docker
 
-# to not need to put sudo for using docker with my administrator user
+# to not need to put sudo for using docker with my administrator user 
 
 usermod -aG docker administrator
+
+# and to not need to put sudo for your current user
+
 usermod -aG docker $USER
 
 
