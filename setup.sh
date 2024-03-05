@@ -9,7 +9,7 @@ echo "The script will now install your tools"
 
 dnf update
 
-dnf install btop git -y
+dnf install btop git fastfetch -y
 
 # configuring cockpit
 
