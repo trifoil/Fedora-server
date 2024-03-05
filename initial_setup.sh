@@ -30,6 +30,7 @@ systemctl enable docker
 
 systemctl start docker
 
+
 # to not need to put sudo for using docker with my administrator user 
 
 usermod -aG docker administrator
@@ -37,6 +38,12 @@ usermod -aG docker administrator
 # and to not need to put sudo for your current user
 
 usermod -aG docker $USER
+
+# install docker-compose
+
+dnf install docker-compose
+
+
 
 # pull and run the portainer image it needs to be privileged because it is conflicting SELinx
 
