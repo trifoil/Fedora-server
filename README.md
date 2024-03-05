@@ -11,6 +11,6 @@ sudo ./setup.sh
 ```
 
 Then connect to cockpit using port 9090
-Access portainer on port 9000
+Access portainer on port 9443
 
 https://nginxproxymanager.com/guide/#quick-setup

@@ -38,11 +38,10 @@ usermod -aG docker administrator
 
 usermod -aG docker $USER
 
-# pull and run the portainer image
+# pull and run the portainer image it needs to be privileged because it is conflicting SELinx
 
 docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-
+docker run -d --privileged -p 9443:9443 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 
 docker --version
 
