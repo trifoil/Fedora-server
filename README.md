@@ -10,4 +10,4 @@ chmod +x setup.sh
 sudo ./setup.sh
 ```
 
-connect to cockpit using port 9090
+Then connect to cockpit using port 9090
