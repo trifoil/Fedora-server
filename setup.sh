@@ -7,7 +7,7 @@ fi
 
 echo "The script will now install your tools"
 
-apt update
+dnf update
 
 # configuring cockpit
 
