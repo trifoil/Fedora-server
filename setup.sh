@@ -17,6 +17,10 @@ systemctl enable --now cockpit.socket
 firewall-cmd --permanent --zone=public --add-service=cockpit
 firewall-cmd --reload
 
+echo You can now connect at :
+
+ip a
+
 # install and enable docker (start auto at boot)
 
 dnf install docker -y
