@@ -11,7 +11,7 @@ apt update
 
 # configuring cockpit
 
-apt install -y cockpit 
+dnf install cockpit -y
 systemctl enable --now cockpit.socket
 
 sudo firewall-cmd --permanent --zone=public --add-service=cockpit

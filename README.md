@@ -5,7 +5,7 @@ The script gets all my useful files and sets up the tools
 first, run 
 
 ```
-wget https://github.com/trifoil/Fedora-server/blob/main/setup.sh
+wget https://raw.githubusercontent.com/trifoil/Fedora-server/main/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
