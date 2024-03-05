@@ -43,6 +43,7 @@ usermod -aG docker $USER
 docker pull portainer/portainer-ce
 
 sudo docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
+firewall-cmd --permanent --zone=public --add-service=portainer
 
 
 docker --version
