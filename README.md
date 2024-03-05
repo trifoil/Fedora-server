@@ -1,5 +1,7 @@
 # Server installation for noobie
 
+## Initial setup
+
 The script gets all my useful files and sets up the tools
 
 first, run 
@@ -18,7 +20,15 @@ Access portainer on port 9443
 
 
 
+## Docker compose to generate website
 
+```
+cd Downloads
+git clone https://github.com/trifoil/Fedora-server.git
+cd Fedora-server/second_test
+docker compose up -d
+```
 
+## Nginx proxy manager
 
 https://nginxproxymanager.com/guide/#quick-setup
