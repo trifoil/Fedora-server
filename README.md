@@ -32,4 +32,14 @@ docker run -d -p 8080:80 webtest
 
 ## Nginx proxy manager
 
+In portainer, go to App templates -> custom templates
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
 https://nginxproxymanager.com/guide/#quick-setup
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
