@@ -26,7 +26,6 @@ Access portainer on port 9443
 cd Downloads
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server/second_test
-chmod -R 755 php
 docker-compose up -d
 ```
 
