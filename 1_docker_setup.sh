@@ -22,8 +22,6 @@ usermod -aG docker $USER
 # install docker-compose
 
 dnf install docker-compose -y
-systemctl enable docker-compose
-
 
 # pull and run the portainer image it needs to be privileged because it is conflicting SELinx
 
