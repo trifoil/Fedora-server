@@ -1,6 +1,8 @@
 version: '3.8'
 services:
+  privileged: True
   app:
+    privileged: True
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -24,12 +26,11 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     depends_on:
       - db
-    
-    privileged: true
 
   db:
     image: 'jc21/mariadb-aria:latest'
     restart: unless-stopped
+    privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
@@ -38,5 +39,3 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - ./mysql:/var/lib/mysql
-
-    privileged: true

@@ -9,7 +9,7 @@ echo "The script will now install nginx proxy manager"
 echo "Updating..."
 dnf update -y
 
-cd nginx-compose
+cd nginx_compose
 docker-compose up -d
 
 docker ps
