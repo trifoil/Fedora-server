@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
   apache_php:
-    image: php:apache
-    container_name: apache_php_server
+    image: httpd:alpine
+    container_name: alpineserver
     ports:
       - "8080:80"
     volumes:
