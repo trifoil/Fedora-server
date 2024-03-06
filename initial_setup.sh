@@ -5,6 +5,8 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 
+# start of the script
+
 echo "The script will now install your basic tools"
 
 # basic shit
@@ -36,4 +38,3 @@ echo "on port 9090"
 # end of the script
 
 echo "Installation complete"
-

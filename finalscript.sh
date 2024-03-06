@@ -6,7 +6,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 echo "The script will now install your containers"
-
+echo "Updating..."
 dnf update
 
 # install and enable docker (start auto at boot)
@@ -35,9 +35,6 @@ systemctl enable docker-compose
 docker volume create portainer_data
 docker run -d --privileged -p 9443:9443 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 
+
 docker --version
-
-
-
 echo "Installation complete"
-
