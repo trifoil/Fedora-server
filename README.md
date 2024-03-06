@@ -1,13 +1,10 @@
 # Server installation for noobie
 
-## Initial setup
-
-The script gets all my useful files and sets up the tools
-
-first, run 
+## Full setup
 
 ```
-curl -O https://raw.githubusercontent.com/trifoil/Fedora-server/main/setup.sh
+git clone https://github.com/trifoil/Fedora-server.git
+cd Fedora-server
 chmod +x setup.sh
 sudo ./setup.sh
 ```
@@ -20,7 +17,7 @@ Access portainer on port 9443
 
 
 
-## Docker website
+## Docker website nul
 
 ```
 cd Downloads
@@ -32,9 +29,12 @@ docker run -d -p 8080:80 webtest
 
 ## Nginx proxy manager
 
-In portainer, go to App templates -> custom templates
-
 https://nginxproxymanager.com/guide/#quick-setup
 
 Email:    admin@example.com
 Password: changeme
+
+
+## Docker website suite
+
+https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
