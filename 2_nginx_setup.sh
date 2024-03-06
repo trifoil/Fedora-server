@@ -9,6 +9,7 @@ echo "The script will now install nginx proxy manager"
 echo "Updating..."
 dnf update
 
-
+cd nginx-compose
+docker-compose up -d
 
 echo "Installation complete"
