@@ -5,12 +5,12 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 
-echo "The script will now install nginx proxy manager"
+echo "The script will now install your php website"
 echo "Updating..."
 dnf update -y
 
-cd second_test
-docker-compose up -d
+cd apache-php-fpm-app
+docker-compose up --build -d
 
 docker ps
 
