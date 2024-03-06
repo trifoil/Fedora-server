@@ -12,4 +12,6 @@ dnf update
 cd nginx-compose
 docker-compose up -d
 
+docker ps
+
 echo "Installation complete"
