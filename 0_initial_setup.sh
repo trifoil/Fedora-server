@@ -12,7 +12,7 @@ echo "The script will now install your basic tools"
 # basic shit
 
 echo "Updating..."
-dnf update
+dnf update -y
 echo "installing btop, git and fastfetch"
 dnf install btop git fastfetch -y
 

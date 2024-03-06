@@ -7,7 +7,7 @@ fi
 
 echo "The script will now install your containers"
 echo "Updating..."
-dnf update
+dnf update -y
 
 # install and enable docker (start auto at boot)
 
@@ -21,7 +21,7 @@ usermod -aG docker $USER
 
 # install docker-compose
 
-dnf install docker-compose
+dnf install docker-compose -y
 systemctl enable docker-compose
 
 
