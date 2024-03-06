@@ -20,13 +20,14 @@ Access portainer on port 9443
 
 
 
-## Docker compose to generate website
+## Docker website
 
 ```
 cd Downloads
 git clone https://github.com/trifoil/Fedora-server.git
-cd Fedora-server/second_test
-docker-compose up -d
+cd Fedora-server/first_test
+docker build -t webtest .
+docker run -d -p 8080:80 webtest
 ```
 
 ## Nginx proxy manager
