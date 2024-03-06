@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html
+    privileged: true
+
+  apache-httpd:
+    build:
+      context: .
+      dockerfile: ./apache/Dockerfile
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - php-fpm
+    privileged: true
