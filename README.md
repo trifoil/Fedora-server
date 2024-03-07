@@ -26,6 +26,12 @@ sudo ./setup.sh
         * User: root as the  and 
         * Password: password
 
+## A pointer 
+
+put your public IP addr in there :
+
+![alt text](image.png)
+
 ## Useful links
 
 * https://nginxproxymanager.com/guide/#quick-setup
