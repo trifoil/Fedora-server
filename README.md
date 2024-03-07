@@ -28,5 +28,5 @@ sudo ./setup.sh
 
 ## Useful links
 
-https://nginxproxymanager.com/guide/#quick-setup
-https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
+* https://nginxproxymanager.com/guide/#quick-setup
+* https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
