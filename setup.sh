@@ -13,9 +13,9 @@ chmod +x 1_docker_setup.sh
 chmod +x 2_nginx_setup.sh
 chmod +x 3_php_site_setup.sh
 
-./ +x 0_initial_setup.sh
-./ +x 1_docker_setup.sh
-./ +x 2_nginx_setup.sh
-./ +x 3_php_site_setup.sh
+./0_initial_setup.sh
+./1_docker_setup.sh
+./2_nginx_setup.sh
+./3_php_site_setup.sh
 
 echo "Yeppee again!"
