@@ -21,9 +21,6 @@ sudo ./setup.sh
         * Email:    admin@example.com
         * Password: changeme
 
-## Nginx proxy manager
-
-https://nginxproxymanager.com/guide/#quick-setup
 
 ## Useful links
 
