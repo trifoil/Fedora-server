@@ -30,9 +30,7 @@ sudo ./setup.sh
 
 1) Add a new A record for your domain
 
-2) Put your public IP addr and the subdomain you want to make reachable, here trifoil.trifoil.cloudns.ch :
-
-    ![alt text](image.png)
+2) Put your public IP addr and the subdomain you want to make reachable (here trifoil.trifoil.cloudns.ch)
 
 ## SSL certificate
 
@@ -44,9 +42,7 @@ In nginx, set up the SSL certificate :
 
 * If you try to reach the server, the output should be :
 
-    ![alt text](image-1.png)
-
-*DNS challenge is not required
+* DNS challenge is not required
 
 ## Proxy Host
 
