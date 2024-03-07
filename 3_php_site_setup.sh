@@ -9,7 +9,7 @@ echo "The script will now install your php website"
 echo "Updating..."
 dnf update -y
 
-cd apache-php-fpm-app
+cd 3_apache-php-fpm-app
 docker-compose up --build -d
 
 docker ps
