@@ -60,6 +60,8 @@ Add proxy host :
 
 Enjoy :)
 
+👉 https://trifoil.trifoil.cloudns.ch/
+
 ## Useful links
 
 * https://nginxproxymanager.com/guide/#quick-setup
