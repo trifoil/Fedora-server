@@ -21,6 +21,10 @@ sudo ./setup.sh
         * Email:    admin@example.com
         * Password: changeme
 
+4) Access phpMyAdmin
+    * Default credentials:
+        * User: root as the  and 
+        * Password: password
 
 ## Useful links
 
