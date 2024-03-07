@@ -14,4 +14,4 @@ docker-compose up --build -d
 
 docker ps
 
-echo "Installation complete"
+echo "Script 3 complete"

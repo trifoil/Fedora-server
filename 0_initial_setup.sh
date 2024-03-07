@@ -37,4 +37,4 @@ echo "on port 9090"
 
 # end of the script
 
-echo "Installation complete"
+echo "Script 0 complete"
