@@ -9,32 +9,23 @@ chmod +x setup.sh
 sudo ./setup.sh
 ```
 
-Then connect to cockpit using port 9090
+## Manual instructions (post setup)
 
-Directly set up a static IP address !
+1) Connect to cockpit using port 9090
+    * Directly set up a static IP address !
 
-Access portainer on port 9443
+2) Access portainer on port 9443
 
-
-
-## Docker website nul
-
-```
-cd Downloads
-git clone https://github.com/trifoil/Fedora-server.git
-cd Fedora-server/first_test
-docker build -t webtest .
-docker run -d -p 8080:80 webtest
-```
+3) Access nginx on port 81
+    * Default credentials:
+        * Email:    admin@example.com
+        * Password: changeme
 
 ## Nginx proxy manager
 
 https://nginxproxymanager.com/guide/#quick-setup
 
-Email:    admin@example.com
-Password: changeme
+## Useful links
 
-
-## Docker website suite
-
+https://nginxproxymanager.com/guide/#quick-setup
 https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
