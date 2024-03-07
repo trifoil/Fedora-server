@@ -28,9 +28,41 @@ sudo ./setup.sh
 
 ## A pointer 
 
-put your public IP addr in there :
+1) Add a new A record for your domain
 
-![alt text](image.png)
+2) Put your public IP addr and the subdomain you want to make reachable, here trifoil.trifoil.cloudns.ch :
+
+    ![alt text](image.png)
+
+## SSL certificate
+
+In nginx, set up the SSL certificate :
+
+* "Add SSL certificate" -> "Let's encrypt"
+
+* Domain name : ```trifoil.trifoil.cloudns.ch```
+
+* If you try to reach the server, the output should be :
+
+    ![alt text](image-1.png)
+
+*DNS challenge is not required
+
+## Proxy Host
+
+Add proxy host :
+
+* Go to "Dashboard" -> "Proxy Hosts" -> "Add Proxy Host"
+
+* Fill in :
+    * Domain Names : the domain you set up in the step 1 (here, trifoil.trifoi.cloudns.ch)
+    * Scheme https if anyone else has access to your LAN
+    * IP is the IP of your server in your LAN
+    * Forward Port is the port where you access your website, defined in the yaml file
+
+## Access your website
+
+Enjoy :)
 
 ## Useful links
 
