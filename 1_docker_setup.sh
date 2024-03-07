@@ -19,6 +19,8 @@ systemctl start docker
 
 usermod -aG docker $USER
 
+usermod -aG docker administrator
+
 # install docker-compose
 
 dnf install docker-compose -y
