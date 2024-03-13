@@ -68,3 +68,4 @@ Enjoy :)
 * https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
 * https://github.com/charmbracelet/gum
 * https://github.com/TaitoUnited/full-stack-template/blob/dev/docker-compose.yaml
+* https://www.cloudbees.com/blog/using-docker-compose-for-nodejs-development
