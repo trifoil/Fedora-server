@@ -66,3 +66,4 @@ Enjoy :)
 
 * https://nginxproxymanager.com/guide/#quick-setup
 * https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
+* https://github.com/charmbracelet/gum
