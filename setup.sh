@@ -5,6 +5,16 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 
+# gum nstallation
+
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install gum
+
 # start of the script
 echo "Yeppee"
 
