@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   php-fpm:
-    name: PHP-server
+    container_name: PHP-server
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
     restart: always
 
   apache-httpd:
-    name: Apache-Server
+    container_name: Apache-Server
     build:
       context: .
       dockerfile: ./apache/Dockerfile
@@ -25,7 +25,7 @@ services:
     restart: always
 
   mysql-db:
-    name: mySQL-DB
+    container_name: mySQL-DB
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -38,7 +38,7 @@ services:
     restart: always
 
   phpmyadmin:
-    name: phpMyAdmin
+    container_name: phpMyAdmin
     image: phpmyadmin/phpmyadmin
     links:
       - mysql-db
