@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   app:
+    name: NGINX-proxy-manager
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -28,6 +29,7 @@ services:
     privileged: true
 
   db:
+    name: NGINX-proxy-manager-DB
     image: 'jc21/mariadb-aria:latest'
     restart: unless-stopped
     environment:

@@ -67,3 +67,4 @@ Enjoy :)
 * https://nginxproxymanager.com/guide/#quick-setup
 * https://thriveread.com/docker-apache-httpd-with-php-fpm-and-mysql/
 * https://github.com/charmbracelet/gum
+* https://github.com/TaitoUnited/full-stack-template/blob/dev/docker-compose.yaml
