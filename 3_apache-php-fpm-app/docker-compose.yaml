@@ -7,6 +7,7 @@ services:
     volumes:
       - ./app:/var/www/html
     privileged: true
+    restart: always
 
   apache-httpd:
     build:
@@ -19,6 +20,7 @@ services:
     depends_on:
       - php-fpm
     privileged: true
+    restart: always
 
   mysql-db:
     image: mysql:8.0
@@ -30,6 +32,7 @@ services:
     ports:
       - "3306:3306"
     privileged: true
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -41,3 +44,4 @@ services:
       PMA_HOST: mysql-db
       MYSQL_ROOT_PASSWORD: password
     privileged: true
+    restart: always
