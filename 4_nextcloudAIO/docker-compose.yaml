@@ -16,6 +16,7 @@ services:
       - nextcloud:/var/www/html
     networks:
       - nextcloud_network
+    privileged: true
 
   mysql:
     image: mysql
@@ -30,6 +31,7 @@ services:
       - mysql:/var/lib/mysql
     networks:
       - nextcloud_network
+    privileged: true
 
 networks:
   nextcloud_network:
