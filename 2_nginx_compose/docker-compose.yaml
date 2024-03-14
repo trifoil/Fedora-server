@@ -3,7 +3,7 @@ services:
   app:
     container_name: NGINX-proxy-manager
     image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
+    restart: always
     ports:
       # These ports are in format <host-port>:<container-port>
       - '80:80' # Public HTTP Port
@@ -31,7 +31,7 @@ services:
   db:
     container_name: NGINX-proxy-manager-DB
     image: 'jc21/mariadb-aria:latest'
-    restart: unless-stopped
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
