@@ -22,10 +22,12 @@ chmod +x 0_initial_setup.sh
 chmod +x 1_docker_setup.sh
 chmod +x 2_nginx_setup.sh
 chmod +x 3_php_site_setup.sh
+chmod +x 4_nextcloud_setup.sh
 
 ./0_initial_setup.sh
 ./1_docker_setup.sh
 ./2_nginx_setup.sh
 ./3_php_site_setup.sh
+./4_nextcloud_setup.sh
 
 echo "Yeppee again!"
