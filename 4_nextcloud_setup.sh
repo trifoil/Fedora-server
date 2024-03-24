@@ -13,23 +13,6 @@ cd 4_nextcloudAIO
 docker-compose up --build -d
 
 
-docker exec -it nextcloud /bin/bash
-DOMAIN="nextcloud.trifoil.cloudns.nz"
-
-# Path to the Nextcloud config.php file
-CONFIG_FILE="/config/config.php"
-
-# Check if the domain is already in the trusted_domains array
-if grep -q "'$DOMAIN'" "$CONFIG_FILE"; then
-    echo "Domain $DOMAIN is already in the trusted_domains array."
-    exit 1
-fi
-
-# Add the domain to the trusted_domains array
-echo "Adding $DOMAIN to the trusted_domains array..."
-sed -i "/'trusted_domains' =>/a \ \ \ \ $(printf '%b\n' "\ \ \ \ \ \ \ \ $DOMAIN,")" "$CONFIG_FILE"
-
-echo "Domain $DOMAIN has been added to the trusted_domains array."
 
 docker ps
 
