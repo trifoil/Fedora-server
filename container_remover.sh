@@ -8,4 +8,4 @@ docker rm $(docker ps -aq)
 
 docker ps
 
-read -n 1 -s -r -p "Press any key to continue..."
+read -n 1 -s -r -p "Done. Press any key to continue..."

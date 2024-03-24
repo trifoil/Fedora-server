@@ -14,4 +14,4 @@ docker-compose up --build -d
 
 docker ps
 
-echo "Script 3 complete"
+read -n 1 -s -r -p "Done. Press any key to continue..."

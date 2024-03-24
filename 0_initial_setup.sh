@@ -37,4 +37,4 @@ echo "on port 9090"
 
 # end of the script
 
-echo "Script 0 complete"
+read -n 1 -s -r -p "Done. Press any key to continue..."

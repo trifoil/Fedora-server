@@ -35,4 +35,4 @@ docker run -d --privileged -p 9443:9443 -p 8000:8000 --name portainer --restart 
 docker --version
 
 
-echo "Script 1 complete"
+read -n 1 -s -r -p "Done. Press any key to continue..."
