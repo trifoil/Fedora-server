@@ -28,12 +28,9 @@ display_running() {
 }
 
 restart_all_containers() {
-    stop_containers() {
-        docker-compose down
-    }
-    start_containers() {
-        docker-compose up -d
-    }
+docker stop $(docker ps -aq)
+docker start $(docker ps -aq)
+
 }
 
 setup_tools() {
