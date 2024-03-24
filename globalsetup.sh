@@ -30,7 +30,7 @@ display_running() {
 restart_all_containers() {
 docker stop $(docker ps -aq)
 docker start $(docker ps -aq)
-
+read -n 1 -s -r -p "Done. Press any key to continue..."
 }
 
 setup_tools() {
