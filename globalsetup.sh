@@ -59,7 +59,7 @@ setup_website() {
 
 setup_nextcloud_aio() {
     echo "Starting NEXTCLOUD AIO setup (based)"
-    chmod +x 4bis_nextcloud_setup.sh
+    chmod +x 4_nextcloud_setup.sh
     ./4bis_nextcloud_setup.sh
 }
 
