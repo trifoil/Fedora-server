@@ -5,8 +5,8 @@
 ```
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server
-chmod +x setup.sh
-sudo ./setup.sh
+chmod +x globalsetup.sh
+sudo ./globalsetup.sh
 ```
 
 ## Manual instructions (post setup)
