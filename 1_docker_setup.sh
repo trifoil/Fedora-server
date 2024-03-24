@@ -32,6 +32,11 @@ docker run -d --privileged -p 9443:9443 -p 8000:8000 --name portainer --restart 
 
 # display docker version
 
+docker run --detach \
+    --name watchtower \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower
+
 docker --version
 
 
