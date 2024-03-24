@@ -9,6 +9,7 @@ chmod +x globalsetup.sh
 sudo ./globalsetup.sh
 ```
 
+
 ## Manual instructions (post setup)
 
 1) Connect to cockpit using port 9090

@@ -33,11 +33,12 @@ docker run -d --privileged -p 9443:9443 -p 8000:8000 --name portainer --restart 
 # display docker version
 
 docker run --detach \
+    --privileged \
     --name watchtower \
+    --restart always \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower
 
 docker --version
-
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
