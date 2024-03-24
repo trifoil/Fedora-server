@@ -7,3 +7,5 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 
 docker ps
+
+read -n 1 -s -r -p "Press any key to continue..."
