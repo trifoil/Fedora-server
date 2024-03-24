@@ -6,7 +6,7 @@ docker ps
 
 # Stop all running containers
 docker stop $(docker ps -aq)
-
+docker-compose down -v -f $(docker ps -aq)
 # Remove all containers
 docker rm $(docker ps -aq)
 
