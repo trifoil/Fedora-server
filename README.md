@@ -30,7 +30,16 @@ sudo ./globalsetup.sh
 5) Access NEXTCLOUD AIO
     * Default credentials:
         No default. Connect locally and choose.
+    
+    Once you set up nextcloud, its A record and et proxy, you have to add the domain to the list of trusted domains in the config.php 
+    
+    ![alt text](image.png)
 
+    ```
+    docker exec -it <nextcloud> /bin/bash
+    sed -i "/'trusted_domains' =>/a \ \ \ \ $(printf '%b\n' "\ \ \ \ \ \ \ \ nextcloud.trifoil.cloudns.nz,")" "config.php"
+    ```
+    Of course replace the domain name by yours
 ## A pointer 
 
 1) Add a new A record for your domain
