@@ -77,7 +77,7 @@ main() {
             8) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
-        
+        clear
     done
     
 }
