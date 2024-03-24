@@ -6,6 +6,7 @@ display_menu() {
     echo "|------------------------------------------------"
     echo "| Please select a setup option: "
     echo "|------------------------------------------------"
+    echo "| 0. Display running containers"
     echo "| 1. Setup Tools"
     echo "| 2. Setup Docker"
     echo "| 3. Setup NGINX"
@@ -16,13 +17,23 @@ display_menu() {
     echo "|------------------------------------------------"
     echo "| 6. Backup tool"
     echo "| 7. Stop and remove all containers"
-    echo "| 8. Exit"
+    echo "| 8. Restart all containers"
+    echo "| 9. Exit"
     echo "|------------------------------------------------"
     echo ""
 }
 display_running() {
     docker ps
     read -n 1 -s -r -p "Press any key to continue..."
+}
+
+restart_all_containers() {
+    stop_containers() {
+        docker-compose down
+    }
+    start_containers() {
+        docker-compose up -d
+    }
 }
 
 setup_tools() {
@@ -79,7 +90,8 @@ main() {
             5) setup_nextcloud_aio ;;
             6) backup_tool ;;
             7) remove_all_containers ;;
-            8) echo "Bye loser!" && clear && exit;;
+            8) restart_all_containers ;;
+            9) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
         clear
