@@ -75,7 +75,7 @@ main() {
             6) backup_tool ;;
             7) remove_all_containers ;;
             8) echo "Bye loser!" && clear && exit;;
-            *) echo "Invalid choice. Please enter a valid option." ;;
+            *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
         
     done
