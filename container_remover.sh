@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Containers running prior removal"
+
+docker ps
+
 # Stop all running containers
 docker stop $(docker ps -aq)
 
