@@ -11,7 +11,9 @@ dnf update -y
 
 # install and enable docker (start auto at boot)
 
-dnf install docker -y
+#Docker cannot be installed through dnf
+#dnf install docker -y
+curl -fsSL https://get.docker.com | sudo sh
 systemctl enable docker
 systemctl start docker
 
