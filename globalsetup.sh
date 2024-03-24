@@ -20,6 +20,10 @@ display_menu() {
     echo "|------------------------------------------------"
     echo ""
 }
+display_running() {
+    docker psread 
+    -n 1 -s -r -p "Press any key to continue..."
+}
 
 setup_tools() {
     echo "Starting tools setup"
@@ -67,6 +71,7 @@ main() {
         display_menu
         read -p "Enter your choice: " choice
         case $choice in
+            0) display_running ;;
             1) setup_tools ;;
             2) setup_docker ;;
             3) setup_nginx ;;
