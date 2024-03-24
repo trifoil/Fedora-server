@@ -21,8 +21,8 @@ display_menu() {
     echo ""
 }
 display_running() {
-    docker psread 
-    -n 1 -s -r -p "Press any key to continue..."
+    docker ps
+    read -n 1 -s -r -p "Press any key to continue..."
 }
 
 setup_tools() {
