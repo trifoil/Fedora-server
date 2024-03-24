@@ -27,6 +27,10 @@ sudo ./globalsetup.sh
         * User: root as the  and 
         * Password: password
 
+5) Access NEXTCLOUD AIO
+    * Default credentials:
+        No default. Connect locally and choose.
+
 ## A pointer 
 
 1) Add a new A record for your domain
