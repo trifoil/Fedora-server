@@ -18,7 +18,7 @@ services:
       #- ./config.php:/var/www/html/config/config.php
     networks:
       - nextcloud_network
-    #privileged: true
+    privileged: true
 
   mysql:
     image: mysql
@@ -33,7 +33,7 @@ services:
       - mysql:/var/lib/mysql
     networks:
       - nextcloud_network
-    #privileged: true
+    privileged: true
 
 networks:
   nextcloud_network:
