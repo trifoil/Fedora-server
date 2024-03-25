@@ -1,8 +1,7 @@
 version: '3.8'
-
 services:
   nextcloud:
-    image: nextcloud/all-in-one:latest
+    image: nextcloud
     container_name: nextcloud
     restart: unless-stopped
     ports:
@@ -12,14 +11,12 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_PASSWORD=your_password_here
-#      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.trifoil.cloudns.nz 
+      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.trifoil.cloudns.nz
     volumes:
       - nextcloud:/var/www/html
-      #- ./config.php:/var/www/html/config/config.php
     networks:
       - nextcloud_network
-    privileged: true
-
+    #privileged: true
   mysql:
     image: mysql
     container_name: nextcloud_mysql
@@ -33,11 +30,9 @@ services:
       - mysql:/var/lib/mysql
     networks:
       - nextcloud_network
-    privileged: true
-
+    #privileged: true
 networks:
   nextcloud_network:
-
 volumes:
   nextcloud:
   mysql:
