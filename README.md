@@ -32,6 +32,31 @@ PLEASE CHANGE MY DOMAIN NAME BY YOURS IN THE CONFIG FILES
     * Default credentials:
         No default. Connect locally and choose.
 
+        ![alt text](image.png)
+
+    * Then access to your server cli:
+        ```
+        docker exec -it nextcloud /bin/bash
+        apt-get update
+        apt-get install nano
+        nano config/config.php
+        ```
+        Modify the 
+        ```
+        'trusted_domains' => 
+        array (
+            0 => 'localhost:8888',
+        ),
+        ```
+        by adding your domain name, ie:
+        ```
+        'trusted_domains' => 
+        array (
+            0 => 'localhost:8888',
+            1 => 'nextcloud.trifoil.ch',
+        ),
+        ```
+
 ## A pointer 
 
 1) Add a new A record for your domain
