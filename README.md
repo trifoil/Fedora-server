@@ -9,7 +9,8 @@ chmod +x globalsetup.sh
 sudo ./globalsetup.sh
 ```
 
-PLEASE CHANGE MY DOMAIN NAME BY YOURS IN THE CONFIG FILES
+> [!IMPORTANT]  
+> PLEASE CHANGE MY DOMAIN NAME BY YOURS IN THE CONFIG FILES
 
 ## Manual instructions (post setup)
 
