@@ -19,8 +19,8 @@ display_menu() {
     echo "| 7. Backup tool"
     echo "| 8. Stop and remove all containers"
     echo "| 9. Restart all containers"
-    echo "| 10. Exit"
-    echo "| 11. Use whole lvm"
+    echo "| 10. Use whole lvm"
+    echo "| 11. Exit"
     echo "|------------------------------------------------"
     echo ""
 }
