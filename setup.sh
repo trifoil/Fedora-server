@@ -77,7 +77,9 @@ remove_all_containers() {
 
 resize_lvm() {
     echo "resizing ..."
+    lsblk
     lvextend fedora/root /dev/sda3
+    lsblk
 }
 
 # Main function
