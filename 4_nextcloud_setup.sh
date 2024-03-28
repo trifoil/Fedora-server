@@ -9,7 +9,7 @@ echo "The script will now install nextcloud"
 echo "Updating..."
 dnf update -y
 
-cd 4_nextcloudAIO
+cd 4_nextcloud
 docker-compose up --build -d
 
 

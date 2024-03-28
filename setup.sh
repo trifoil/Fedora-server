@@ -10,15 +10,17 @@ display_menu() {
     echo "| 1. Setup Tools"
     echo "| 2. Setup Docker"
     echo "| 3. Setup NGINX"
-    echo "| 4. Setup a website"
-    echo "| 5. Setup a NEXTCLOUD AIO instance"
+    echo "| 4. Setup a website"    
+    echo "| 5. Setup a NEXTCLOUD instance"
+    echo "| 6. Setup a NEXTCLOUD AIO instance"
     echo "|------------------------------------------------"
     echo "| Or another option :"
     echo "|------------------------------------------------"
-    echo "| 6. Backup tool"
-    echo "| 7. Stop and remove all containers"
-    echo "| 8. Restart all containers"
-    echo "| 9. Exit"
+    echo "| 7. Backup tool"
+    echo "| 8. Stop and remove all containers"
+    echo "| 9. Restart all containers"
+    echo "| 10. Exit"
+    echo "| 11. Use whole lvm"
     echo "|------------------------------------------------"
     echo ""
 }
@@ -73,6 +75,11 @@ remove_all_containers() {
     ./container_remover.sh
 }
 
+resize_lvm() {
+    echo "resizing ..."
+    lvextend fedora/root /dev/sda3
+}
+
 # Main function
 main() {
     while true; do
@@ -84,11 +91,13 @@ main() {
             2) setup_docker ;;
             3) setup_nginx ;;
             4) setup_website ;;
-            5) setup_nextcloud_aio ;;
-            6) backup_tool ;;
-            7) remove_all_containers ;;
-            8) restart_all_containers ;;
-            9) echo "Bye loser!" && clear && exit;;
+            5) setup_nextcloud ;;
+            6) setup_nextcloud_AIO ;;
+            7) backup_tool ;;
+            8) remove_all_containers ;;
+            9) restart_all_containers ;;
+            10) resize_lvm ;;
+            11) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
         clear
