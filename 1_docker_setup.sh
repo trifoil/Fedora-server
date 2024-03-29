@@ -44,3 +44,4 @@ docker run --detach \
 docker --version
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
+
