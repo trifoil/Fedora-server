@@ -19,8 +19,7 @@ display_menu() {
     echo "| 7. Backup tool"
     echo "| 8. Stop and remove all containers"
     echo "| 9. Restart all containers"
-    echo "| 10. Use whole lvm"
-    echo "| 11. Exit"
+    echo "| 10. Exit"
     echo "|------------------------------------------------"
     echo ""
 }
@@ -62,7 +61,7 @@ setup_website() {
 setup_nextcloud_aio() {
     echo "Starting NEXTCLOUD AIO setup (based)"
     chmod +x 4_nextcloud_setup.sh
-    ./4_nextcloud_setup.sh
+    ./4_nextcloud_setup_AIO.sh
 }
 
 backup_tool(){
@@ -75,12 +74,12 @@ remove_all_containers() {
     ./container_remover.sh
 }
 
-resize_lvm() {
-    echo "resizing ..."
-    lsblk
-    lvextend fedora/root /dev/sda3
-    lsblk
-}
+# resize_lvm() {
+#     echo "resizing ..."
+#     lsblk
+#     lvextend fedora/root /dev/sda3
+#     lsblk
+# }
 
 # Main function
 main() {
@@ -98,8 +97,7 @@ main() {
             7) backup_tool ;;
             8) remove_all_containers ;;
             9) restart_all_containers ;;
-            10) resize_lvm ;;
-            11) echo "Bye loser!" && clear && exit;;
+            10) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
         clear
