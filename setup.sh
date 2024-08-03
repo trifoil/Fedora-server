@@ -1,29 +1,36 @@
 #!/bin/bash
 
+RED='\033[0;31m' #Red
+BLUE='\e[38;5;33m' #Red
+NC='\033[0m' # No Color
+
 chmod +x -R scripts
 clear
 
 # Function to display the menu
 display_menu() {
     echo ""
-    echo "|------------------------------------------------"
-    echo "| Please select a setup option: "
-    echo "|------------------------------------------------"
-    echo "| 0. Display running containers"
-    echo "| 1. Setup Tools"
-    echo "| 2. Setup Docker"
-    echo "| 3. Setup NGINX"
-    echo "| 4. Setup a website"    
-    echo "| 5. Setup a NEXTCLOUD instance"
-    echo "| 6. Setup a NEXTCLOUD AIO instance"
-    echo "|------------------------------------------------"
-    echo "| Or another option :"
-    echo "|------------------------------------------------"
-    echo "| 7. Backup tool"
-    echo "| 8. Stop and remove all containers"
-    echo "| 9. Restart all containers"
-    echo "| 10. Exit"
-    echo "|------------------------------------------------"
+    echo "|----------------------------------------------------------------------|"
+    echo -e "|                 ${BLUE}Welcome to the server assistant ${NC}                     |"
+    echo "|              Please select the tool you want to use                  |"
+    echo "|----------------------------------------------------------------------|"
+    echo "|                  Please select a setup option:                       |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| 0. Display running containers                                        |"
+    echo "| 1. Setup Tools                                                       |"
+    echo "| 2. Setup Docker                                                      |"
+    echo "| 3. Setup NGINX                                                       |"
+    echo "| 4. Setup a website                                                   |"
+    echo "| 5. Setup a NEXTCLOUD instance                                        |"
+    echo "| 6. Setup a NEXTCLOUD AIO instance                                    |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| Or another option :                                                  |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| 7. Backup tool                                                       |"
+    echo "| 8. Stop and remove all containers                                    |"
+    echo "| 9. Restart all containers                                            |"
+    echo "| 10. Exit                                                             |"
+    echo "|----------------------------------------------------------------------|"
     echo ""
 }
 display_running() {
