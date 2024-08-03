@@ -1,5 +1,8 @@
 #!/bin/bash
 
+chmod +x -R scripts
+clear
+
 # Function to display the menu
 display_menu() {
     echo ""
@@ -36,31 +39,26 @@ read -n 1 -s -r -p "Done. Press any key to continue..."
 
 setup_tools() {
     echo "Starting tools setup"
-    chmod +x 0_initial_setup.sh
     ./0_initial_setup.sh
 }
 
 setup_docker() {
-    chmod +x 1_docker_setup.sh
-    ./1_docker_setup.sh
     echo "setting up Docker"
+    ./1_docker_setup.sh
 }
 
 setup_nginx() {
-    chmod +x 2_nginx_setup.sh
     ./2_nginx_setup.sh
     echo "Starting nginx setup, kindly please wait :)"
 }
 
 setup_website() {
     echo "Starting website setup"
-    chmod +x 3_php_site_setup.sh
     ./3_php_site_setup.sh
 }
 
 setup_nextcloud_aio() {
     echo "Starting NEXTCLOUD AIO setup (based)"
-    chmod +x 4_nextcloud_setup.sh
     ./4_nextcloud_setup_AIO.sh
 }
 
@@ -70,7 +68,6 @@ backup_tool(){
 
 remove_all_containers() {
     echo "Starting container removal"
-    chmod +x container_remover.sh
     ./container_remover.sh
 }
 
