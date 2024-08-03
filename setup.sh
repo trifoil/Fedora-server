@@ -11,10 +11,10 @@ clear
 display_menu() {
     echo ""
     echo "|----------------------------------------------------------------------|"
-    echo -e "|                 ${BLUE}Welcome to the server assistant ${NC}                     |"
-    echo "|              Please select the tool you want to use                  |"
+    echo -e "|                   ${BLUE}Welcome to the server assistant ${NC}                   |"
+    echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
-    echo "|                  Please select a setup option:                       |"
+    echo "|                    Please select a setup option:                     |"
     echo "|----------------------------------------------------------------------|"
     echo "| 0. Display running containers                                        |"
     echo "| 1. Setup Tools                                                       |"
