@@ -4,26 +4,12 @@ RED='\033[0;31m' #Red
 BLUE='\e[38;5;33m' #Red
 NC='\033[0m' # No Color
 
-dnf -y remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
-                  docker-engine
 
-dnf -y install dnf-plugins-core
-dnf -y config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 chmod +x -R scripts
 clear
 
-sudo systemctl start docker
 
 # Function to display the menu
 display_menu() {
