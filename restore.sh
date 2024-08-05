@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 BLUE='\e[38;5;33m' #Red
 NC='\033[0m' # No Color
 
@@ -12,8 +10,6 @@ display_menu() {
     echo "|----------------------------------------------------------------------|"
     echo -e "|                ${BLUE}Welcome to the restoration assistant ${NC}                 |"
     echo "|               Please select the tool you want to use                 |"
-    echo "|----------------------------------------------------------------------|"
-    echo "|                    Please select a setup option:                     |"
     echo "|----------------------------------------------------------------------|"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"

@@ -11,8 +11,6 @@ display_menu() {
     echo -e "|                   ${BLUE}Welcome to the server assistant ${NC}                   |"
     echo "|              Please select the toolbox you want to use               |"
     echo "|----------------------------------------------------------------------|"
-    echo "|                    Please select a setup option:                     |"
-    echo "|----------------------------------------------------------------------|"
     echo "| 0. Services Maintenance                                              |"
     echo "| 1. Services Setup                                                    |"
     echo "| 2. Services Backup                                                   |"
