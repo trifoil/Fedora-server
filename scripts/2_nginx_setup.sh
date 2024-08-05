@@ -10,6 +10,8 @@ echo "The script will now install nginx proxy manager"
 echo "Updating..."
 dnf update -y
 
+mkdir /storage/npm
+
 cd 2_nginx_compose
 docker compose up -d
 
