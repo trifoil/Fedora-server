@@ -4,7 +4,7 @@ RED='\033[0;31m' #Red
 BLUE='\e[38;5;33m' #Red
 NC='\033[0m' # No Color
 
-dnf remove docker \
+dnf -y remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -15,13 +15,15 @@ dnf remove docker \
                   docker-engine-selinux \
                   docker-engine
 
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+dnf -y install dnf-plugins-core
+dnf -y config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 chmod +x -R scripts
 clear
+
+sudo systemctl start docker
 
 # Function to display the menu
 display_menu() {
@@ -71,7 +73,7 @@ setup_docker() {
 }
 
 setup_nginx() {
-    ./2_nginx_setup.sh
+    sh 2_nginx_setup.sh
     echo "Starting nginx setup, kindly please wait :)"
 }
 
