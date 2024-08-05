@@ -1,15 +1,10 @@
 #!/bin/bash
 
-RED='\033[0;31m' #Red
 BLUE='\e[38;5;33m' #Red
 NC='\033[0m' # No Color
 
-
-
-
 chmod +x -R scripts
 clear
-
 
 # Function to display the menu
 display_menu() {
@@ -28,12 +23,20 @@ display_menu() {
     echo "| 5. Setup a NEXTCLOUD instance                                        |"
     echo "| 6. Setup a NEXTCLOUD AIO instance                                    |"
     echo "|----------------------------------------------------------------------|"
-    echo "| Or another option :                                                  |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| 13. Backup NGINX                                                      |"
+    echo "|----------------------------------------------------------------------|"
+    echo "|                    Please select a setup option:                     |"
+    echo "|----------------------------------------------------------------------|"
+    
+    echo "|----------------------------------------------------------------------|"
+    echo "|                         Or another option :                          |"
     echo "|----------------------------------------------------------------------|"
     echo "| 7. Backup tool                                                       |"
     echo "| 8. Stop and remove all containers                                    |"
     echo "| 9. Restart all containers                                            |"
-    echo "| 10. Exit                                                             |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
     echo ""
 }
@@ -105,12 +108,11 @@ main() {
             7) backup_tool ;;
             8) remove_all_containers ;;
             9) restart_all_containers ;;
-            10) echo "Bye loser!" && clear && exit;;
+            q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
         clear
     done
-    
 }
 
 main
