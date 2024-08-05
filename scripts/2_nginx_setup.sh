@@ -5,12 +5,13 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 
+
 echo "The script will now install nginx proxy manager"
 echo "Updating..."
 dnf update -y
 
 cd 2_nginx_compose
-docker-compose up -d
+docker compose up -d
 
 docker ps
 
