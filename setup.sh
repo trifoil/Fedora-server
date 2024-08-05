@@ -9,7 +9,7 @@ clear
 display_menu() {
     echo ""
     echo "|----------------------------------------------------------------------|"
-    echo -e "|                   ${BLUE}Welcome to the setup assistant ${NC}                   |"
+    echo -e "|                   ${BLUE}Welcome to the setup assistant ${NC}                    |"
     echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
     echo "| 0. Setup NGINX Proxy Manager                                         |"
