@@ -4,7 +4,7 @@ echo "The script will now install your php website"
 echo "Updating..."
 dnf update -y
 
-docker-compose up --build -d
+docker compose up --build -d
 
 docker ps
 
