@@ -1,7 +1,6 @@
 rm -rf Fedora-server
 git clone https://github.com/trifoil/Fedora-server.git
-cd Fedora-server/v2
+cd Fedora-server
 sh main.sh
-cd ..
 cd ..
 clear

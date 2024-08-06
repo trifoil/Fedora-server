@@ -12,7 +12,7 @@ display_menu() {
     echo -e "|                   ${BLUE}Welcome to the setup assistant ${NC}                    |"
     echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
-    echo "| 0. Setup Portainer                                                   |"
+    echo "| 0. Setup Docker                                                      |"
     echo "| 1. Setup Portainer                                                   |"
     echo "| 2. Setup NGINX Proxy Manager                                         |"
     echo "| 3. Setup LAMP (Linux, Apache, MySQL, PHP)                            |"
