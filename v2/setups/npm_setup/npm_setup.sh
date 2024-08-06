@@ -2,11 +2,10 @@
 
 cd "$(dirname "$0")"
 
-echo "The script will now install nginx proxy manager"
-echo "Updating..."
+echo "The script will now install NGINX proxy manager"
+echo "Updating ... "
 dnf update -y
 
-#!/bin/bash
 
 # Function to prompt user for input and set default value if input is empty
 prompt() {
@@ -23,8 +22,8 @@ volume_data=$(prompt "Enter the volume path for NGINX Proxy Manager data" "/stor
 volume_letsencrypt=$(prompt "Enter the volume path for Let's Encrypt" "/storage/npm/letsencrypt")
 volume_mysql=$(prompt "Enter the volume path for MySQL data" "/storage/npm/mysql")
 
-# Write to docker-compose.yml
-cat <<EOF > docker-compose.yml
+# Write to docker-compose.yaml
+cat <<EOF > docker-compose.yaml
 version: '3.8'
 services:
   app:
