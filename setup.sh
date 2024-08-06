@@ -48,7 +48,7 @@ main() {
         display_menu
         read -p "Enter your choice: " choice
         case $choice in
-            0) setup_docker
+            0) setup_docker ;;
             1) setup_portainer ;;
             2) setup_npm ;;
             3) setup_lamp ;;
