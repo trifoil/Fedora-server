@@ -23,7 +23,7 @@ display_menu() {
 }
 
 setup_npm(){
-    sh v2/setups/npm_setup/npm_setup.sh
+    sh scripts/setups/nginx_setup/nginx_setup.sh
 }
 
 setup_portainer(){
