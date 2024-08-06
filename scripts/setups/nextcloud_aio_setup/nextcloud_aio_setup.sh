@@ -35,7 +35,6 @@ services:
     ports:
       - 8080:8080
     environment:
-      NEXTCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD}
       NEXTCLOUD_DATADIR: ${VOLUME_LOCATION} 
       APACHE_PORT: 11000
 
