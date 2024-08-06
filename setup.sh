@@ -13,13 +13,18 @@ display_menu() {
     echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
     echo "| 0. Setup Portainer                                                   |"
-    echo "| 1. Setup NGINX Proxy Manager                                         |"
-    echo "| 2. Setup LAMP (Linux, Apache, MySQL, PHP)                            |"
-    echo "| 3. Setup Nextcloud AIO                                               |"
+    echo "| 1. Setup Portainer                                                   |"
+    echo "| 2. Setup NGINX Proxy Manager                                         |"
+    echo "| 3. Setup LAMP (Linux, Apache, MySQL, PHP)                            |"
+    echo "| 4. Setup Nextcloud AIO                                               |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
     echo ""
+}
+
+setup_docker(){
+    sh scripts/setups/docker_setup/docker_setup.sh
 }
 
 setup_npm(){
@@ -43,10 +48,11 @@ main() {
         display_menu
         read -p "Enter your choice: " choice
         case $choice in
-            0) setup_portainer ;;
-            1) setup_npm ;;
-            2) setup_lamp ;;
-            3) setup_nextcloud_aio ;;
+            0) setup_docker
+            1) setup_portainer ;;
+            2) setup_npm ;;
+            3) setup_lamp ;;
+            4) setup_nextcloud_aio ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
