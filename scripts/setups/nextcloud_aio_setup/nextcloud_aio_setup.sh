@@ -39,8 +39,8 @@ services:
     environment:
       NEXTCLOUD_DATADIR: ${VOLUME_LOCATION} 
       APACHE_PORT: 11000
-      NEXTCLOUD_TRUSTED_DOMAINS=${DOMAIN} ${IP_ADDRESS}
-      TRUSTED_PROXIES=${IP_ADDRESS}
+      APACHE_IP_BINDING: 127.0.0.1
+      
 volumes: 
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer 
