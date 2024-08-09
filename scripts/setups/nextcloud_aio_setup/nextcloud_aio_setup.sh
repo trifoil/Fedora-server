@@ -39,7 +39,7 @@ services:
     environment:
       NEXTCLOUD_DATADIR: ${VOLUME_LOCATION} 
       APACHE_PORT: 11000
-      APACHE_IP_BINDING: 127.0.0.1
+      APACHE_IP_BINDING: 0.0.0.0
       
 volumes: 
   nextcloud_aio_mastercontainer:
