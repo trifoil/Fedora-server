@@ -13,8 +13,8 @@ DEFAULT_VOLUME_LOCATION="/storage/aio"
 DEFAULT_PASSWORD="changeme"
 
 # Read input variables
-read -p "Enter the proxy IP address : " IP_ADDRESS
-read -p "Enter the domain name : " DOMAIN
+#read -p "Enter the proxy IP address : " IP_ADDRESS
+#read -p "Enter the domain name : " DOMAIN
 read -p "Enter the volume location [default: $DEFAULT_VOLUME_LOCATION]: " VOLUME_LOCATION
 read -p "Enter the admin password [default: $DEFAULT_PASSWORD]: " ADMIN_PASSWORD
 
