@@ -17,6 +17,7 @@ display_menu() {
     echo "| 2. Setup NGINX Proxy Manager                                         |"
     echo "| 3. Setup LAMP (Linux, Apache, MySQL, PHP)                            |"
     echo "| 4. Setup Nextcloud AIO                                               |"
+    echo "| 5. Setup SurrealDB                                                   |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
@@ -43,6 +44,10 @@ setup_nextcloud_aio(){
     sh scripts/setups/nextcloud_aio_setup/nextcloud_aio_setup.sh
 }
 
+setup_surrealdb(){
+    sh scripts/setups/surrealdb_setup/surrealdb_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -53,6 +58,7 @@ main() {
             2) setup_npm ;;
             3) setup_lamp ;;
             4) setup_nextcloud_aio ;;
+            5) setup_surrealdb ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
