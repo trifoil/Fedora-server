@@ -47,7 +47,7 @@ EOF
 echo "The docker-compose.yml has been created successfully."
 
 # Start the SurrealDB service using Docker Compose
-docker-compose up -d
+docker compose up -d
 
 # List running containers
 docker ps
