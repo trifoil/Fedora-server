@@ -24,7 +24,6 @@ volume_mysql=$(prompt "Enter the volume path for MySQL data" "/storage/npm/mysql
 
 # Write to docker-compose.yaml
 cat <<EOF > docker-compose.yaml
-version: '3.8'
 services:
   app:
     container_name: NGINX-proxy-manager

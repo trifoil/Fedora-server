@@ -29,8 +29,6 @@ db_file_path="$data_volume/mydatabase.db"
 
 # Write to docker-compose.yml
 cat <<EOF > docker-compose.yml
-version: '3.8'
-
 services:
   surrealdb:
     image: surrealdb/surrealdb:latest
@@ -39,9 +37,12 @@ services:
       - "$host_port:8000"
     volumes:
       - $data_volume:/mydata
-    command: start --log trace --user $db_user --pass $db_password file:/mydata/mydatabase.db
+    command: 
+      - start 
+      - --log trace 
+      - --user $db_user 
+      - --pass $db_password 
     restart: unless-stopped
-    user: "\${UID}:\${GID}"
 EOF
 
 echo "The docker-compose.yml has been created successfully."
