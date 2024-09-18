@@ -27,7 +27,6 @@ services:
     container_name: file-manager
     volumes:
       - $filebrowser_volume:/srv
-      - $filebrowser_volume/filebrowser/config:/config
     ports:
       - "$filebrowser_port:80"
     environment:

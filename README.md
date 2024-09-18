@@ -1,4 +1,4 @@
-# Fedrora-server
+# Fedora-server
 
 ## Available apps
 

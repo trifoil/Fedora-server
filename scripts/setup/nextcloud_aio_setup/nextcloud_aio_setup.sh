@@ -40,7 +40,7 @@ services:
       NEXTCLOUD_DATADIR: ${VOLUME_LOCATION} 
       APACHE_PORT: 11000
       APACHE_IP_BINDING: 0.0.0.0
-      
+      NEXTCLOUD_UPLOAD_LIMIT: 50G
 volumes: 
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer 
