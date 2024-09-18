@@ -31,8 +31,7 @@ services:
       - "$filebrowser_port:80"
     environment:
       FB_BASEURL: "/"
-      FB_USERNAME: "$filebrowser_username"
-      FB_PASSWORD: "$filebrowser_password"
+
     restart: unless-stopped
 EOF
 
