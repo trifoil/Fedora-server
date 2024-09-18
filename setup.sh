@@ -15,7 +15,7 @@ display_menu() {
     echo "| 0. Setup Docker                                                      |"
     echo "| 1. Setup Portainer                                                   |"
     echo "| 2. Setup NGINX Proxy Manager                                         |"
-    echo "| 3. Setup LAMP (Linux, Apache, MySQL, PHP)                            |"
+    echo "| 3. Setup FileBrowser                                                 |"
     echo "| 4. Setup Nextcloud AIO                                               |"
     echo "| 5. Setup SurrealDB                                                   |"
     echo "|----------------------------------------------------------------------|"
@@ -36,8 +36,8 @@ setup_portainer(){
     sh scripts/setup/portainer_setup/portainer_setup.sh
 }
 
-setup_lamp(){
-    sh scripts/setup/lamp_setup/lamp_setup.sh
+setup_filebrowser(){
+    sh scripts/setup/filebrowser_setup/filebrowser_setup.sh
 }
 
 setup_nextcloud_aio(){
@@ -56,7 +56,7 @@ main() {
             0) setup_docker ;;
             1) setup_portainer ;;
             2) setup_npm ;;
-            3) setup_lamp ;;
+            3) setup_filebrowser ;;
             4) setup_nextcloud_aio ;;
             5) setup_surrealdb ;;
             q) echo "Bye loser!" && clear && exit;;
