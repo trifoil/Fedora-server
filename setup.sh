@@ -25,27 +25,27 @@ display_menu() {
 }
 
 setup_docker(){
-    sh scripts/setups/docker_setup/docker_setup.sh
+    sh scripts/setup/docker_setup/docker_setup.sh
 }
 
 setup_npm(){
-    sh scripts/setups/npm_setup/npm_setup.sh
+    sh scripts/setup/npm_setup/npm_setup.sh
 }
 
 setup_portainer(){
-    sh scripts/setups/portainer_setup/portainer_setup.sh
+    sh scripts/setup/portainer_setup/portainer_setup.sh
 }
 
 setup_lamp(){
-    sh scripts/setups/lamp_setup/lamp_setup.sh
+    sh scripts/setup/lamp_setup/lamp_setup.sh
 }
 
 setup_nextcloud_aio(){
-    sh scripts/setups/nextcloud_aio_setup/nextcloud_aio_setup.sh
+    sh scripts/setup/nextcloud_aio_setup/nextcloud_aio_setup.sh
 }
 
 setup_surrealdb(){
-    sh scripts/setups/surrealdb_setup/surrealdb_setup.sh
+    sh scripts/setup/surrealdb_setup/surrealdb_setup.sh
 }
 
 main() {
