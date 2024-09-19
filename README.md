@@ -16,6 +16,9 @@ Work in progress :
     * Jellyfin
     * 
 * Git instance
+* Dynamic DNS
+* Monitoring
+* VPN with https encapsulation
 
 ## Sources
 
