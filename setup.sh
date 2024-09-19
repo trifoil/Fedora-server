@@ -18,6 +18,7 @@ display_menu() {
     echo "| 3. Setup FileBrowser                                                 |"
     echo "| 4. Setup Nextcloud AIO                                               |"
     echo "| 5. Setup SurrealDB                                                   |"
+    echo "| 6. Setup Streaming                                                   |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
@@ -48,6 +49,10 @@ setup_surrealdb(){
     sh scripts/setup/surrealdb_setup/surrealdb_setup.sh
 }
 
+setup_streaming(){
+    sh scripts/setup/streaming_setup/streaming_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -59,6 +64,7 @@ main() {
             3) setup_filebrowser ;;
             4) setup_nextcloud_aio ;;
             5) setup_surrealdb ;;
+            6) setup_streaming ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
