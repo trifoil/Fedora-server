@@ -16,11 +16,19 @@ Work in progress :
     * Jellyfin
     * 
 * Git instance
+
+## Sources
+
+* https://github.com/louislam/uptime-kuma
+* https://github.com/qdm12/ddns-updater
+
 ## Get the script to work
 
+```
 rm -rf Fedora-server
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server
 sudo sh main.sh
 cd ..
 clear
+```
