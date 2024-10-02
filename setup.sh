@@ -20,6 +20,7 @@ display_menu() {
     echo "| 5. Setup SurrealDB                                                   |"
     echo "| 6. Setup Streaming                                                   |"
     echo "| 7. Setup Vanilla JS Website                                          |"
+    echo "| 7. Setup Vanilla JS Website                                          |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
@@ -58,6 +59,10 @@ setup_vanilla_js_website(){
     sh scripts/setup/js_website_setup/js_website_setup.sh
 }
 
+setup_ddns_updater()(
+    sh scripts/setup/ddns_updater_setup/ddns_updater_setup.sh
+)
+
 main() {
     while true; do
         display_menu
@@ -71,6 +76,7 @@ main() {
             5) setup_surrealdb ;;
             6) setup_streaming ;;
             7) setup_vanilla_js_website ;;
+            8) setup_ddns_updater ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
