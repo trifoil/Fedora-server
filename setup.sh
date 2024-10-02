@@ -21,7 +21,7 @@ display_menu() {
     echo "| 5. Setup SurrealDB                                                   |"
     echo "| 6. Setup Streaming                                                   |"
     echo "| 7. Setup Vanilla JS Website                                          |"
-    echo "| 7. Setup Vanilla JS Website                                          |"
+    echo "| 7. Setup DDNS updater                                                |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
