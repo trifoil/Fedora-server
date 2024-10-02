@@ -14,7 +14,7 @@ prompt() {
 }
 
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
-ddns_updater_port=$(prompt "Enter the port number" "42070")
+ddns_updater_port=$(prompt "Enter the port number" "8094")
 
 cat <<EOF > docker-compose.yaml
 services:
@@ -23,7 +23,7 @@ services:
     container_name: ddns-updater
     network_mode: bridge
     ports:
-      - $ddns_updater_port:8000/tcp
+      - 8000:8000/tcp
     volumes:
       - $ddns_updater_volume:/updater/data
     environment:

@@ -36,6 +36,5 @@ User services :
 ## Sources
 
 * https://github.com/louislam/uptime-kuma
-* https://github.com/qdm12/ddns-updater
 * https://github.com/pgollor/gitbucket-docker/tree/master
-
+* https://github.com/qdm12/ddns-updater/blob/master/docker-compose.yml
