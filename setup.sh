@@ -1,6 +1,7 @@
 #!/bin/bash
 
-BLUE='\e[38;5;33m' #Red
+BLUE='\e[38;5;33m' 
+RED='\e[38;5;196m'
 NC='\033[0m' # No Color
 
 clear
@@ -12,7 +13,8 @@ display_menu() {
     echo -e "|                   ${BLUE}Welcome to the setup assistant ${NC}                    |"
     echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
-    echo "| 0. Setup Docker                                                      |"
+    echo "| 0. Setup Docker                                             ${RED
+}REQUIRED ${NC}|"
     echo "| 1. Setup Portainer                                                   |"
     echo "| 2. Setup NGINX Proxy Manager                                         |"
     echo "| 3. Setup FileBrowser                                                 |"
