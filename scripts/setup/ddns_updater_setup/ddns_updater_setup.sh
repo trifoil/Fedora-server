@@ -21,9 +21,8 @@ services:
   ddns-updater:
     image: qmcgaw/ddns-updater
     container_name: ddns-updater
-    network_mode: bridge
-    ports:
-      - 8095:8000/tcp
+    network_mode: host
+
     volumes:
       - $ddns_updater_volume:/updater/data
     environment:
@@ -37,19 +36,10 @@ services:
       - PUBLICIP_DNS_PROVIDERS=all
       - PUBLICIP_DNS_TIMEOUT=3s
       - HTTP_TIMEOUT=10s
+      - LISTENING_ADDRESS=:8000
 
-      # Web UI
-      - LISTENING_ADDRESS=:$ddns_updater_port
-      - ROOT_URL=/
 
-      # Backup
-      - BACKUP_PERIOD=0 # 0 to disable
-      - BACKUP_DIRECTORY=/updater/data
 
-      # Other
-      - LOG_LEVEL=info
-      - LOG_CALLER=hidden
-      - SHOUTRRR_ADDRESSES=
     restart: always
 EOF
 
@@ -59,3 +49,20 @@ docker compose up -d
 docker ps
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
+
+
+    # ports:
+    #   - $ddns_updater_port:8000/tcp
+
+#      # Web UI
+#   - LISTENING_ADDRESS=:$ddns_updater_port
+#   - ROOT_URL=/
+
+#   # Backup
+#   - BACKUP_PERIOD=0 # 0 to disable
+#   - BACKUP_DIRECTORY=/updater/data
+
+#   # Other
+#   - LOG_LEVEL=info
+#   - LOG_CALLER=hidden
+#   - SHOUTRRR_ADDRESSES=
