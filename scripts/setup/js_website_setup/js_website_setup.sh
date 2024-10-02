@@ -15,7 +15,7 @@ prompt() {
 
 js_website_name=$(prompt "Enter the js website container name" "vanilla-js-site")
 js_website_volume=$(prompt "Enter the volume for your js website" "/storage/$js_website_name")
-js_website_port=$(prompt "Enter the port number" "8079")
+js_website_port=$(prompt "Enter the port number" "42069")
 
 cat <<EOF > docker-compose.yaml
 services:
