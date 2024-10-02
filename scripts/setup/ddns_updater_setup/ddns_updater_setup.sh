@@ -23,7 +23,7 @@ services:
     container_name: ddns-updater
     network_mode: bridge
     ports:
-      - 8000:8000/tcp
+      - 8095:8000/tcp
     volumes:
       - $ddns_updater_volume:/updater/data
     environment:
