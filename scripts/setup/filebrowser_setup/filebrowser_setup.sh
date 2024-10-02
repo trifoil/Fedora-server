@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
 EOF
 
-echo "The docker-compose.yml has been created successfully."
+echo "The docker-compose.yaml has been created successfully."
 
 docker compose up -d
 docker ps
