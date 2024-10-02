@@ -13,7 +13,7 @@ display_menu() {
     echo -e "|                   ${BLUE}Welcome to the setup assistant ${NC}                    |"
     echo "|                Please select the tool you want to use                |"
     echo "|----------------------------------------------------------------------|"
-    echo "| 0. Setup Docker                                             ${RED}REQUIRED ${NC}|"
+    echo -e "| 0. Setup Docker                                             ${RED}REQUIRED ${NC}|"
     echo "| 1. Setup Portainer                                                   |"
     echo "| 2. Setup NGINX Proxy Manager                                         |"
     echo "| 3. Setup FileBrowser                                                 |"
