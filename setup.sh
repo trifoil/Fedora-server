@@ -19,6 +19,7 @@ display_menu() {
     echo "| 4. Setup Nextcloud AIO                                               |"
     echo "| 5. Setup SurrealDB                                                   |"
     echo "| 6. Setup Streaming                                                   |"
+    echo "| 7. Setup Vanilla JS Website                                          |"
     echo "|----------------------------------------------------------------------|"
     echo "| q. Exit                                                              |"
     echo "|----------------------------------------------------------------------|"
@@ -53,6 +54,10 @@ setup_streaming(){
     sh scripts/setup/streaming_setup/streaming_setup.sh
 }
 
+setup_vanilla_js_website(){
+    sh scripts/setup/js_website_setup/js_website_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -65,6 +70,7 @@ main() {
             4) setup_nextcloud_aio ;;
             5) setup_surrealdb ;;
             6) setup_streaming ;;
+            7) setup_vanilla_js_website ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
