@@ -16,53 +16,55 @@ prompt() {
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
 ddns_updater_port=$(prompt "Enter the port number" "8094")
 
-cat <<EOF > docker-compose.yaml
-services:
-  ddns-updater:
-    image: qmcgaw/ddns-updater
-    container_name: ddns-updater
-    network_mode: host
+mkdir $ddns_updater_volume
 
-    volumes:
-      - $ddns_updater_volume:/updater/data
-    environment:
-      - CONFIG=
-      - PERIOD=5m
-      - UPDATE_COOLDOWN_PERIOD=5m
-      - PUBLICIP_FETCHERS=all
-      - PUBLICIP_HTTP_PROVIDERS=all
-      - PUBLICIPV4_HTTP_PROVIDERS=all
-      - PUBLICIPV6_HTTP_PROVIDERS=all
-      - PUBLICIP_DNS_PROVIDERS=all
-      - PUBLICIP_DNS_TIMEOUT=3s
-      - HTTP_TIMEOUT=10s
-      - LISTENING_ADDRESS=:8000
+while [ in_menu = true ]
+do 
+  
+done
 
-
-
-    restart: always
+cat <<EOF > $ddns_updater_volume
+{
+    "settings": [
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "@", 
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      },
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "subdomain1",
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      },
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "subdomain2",
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      }
+    ],
+    "period": 300
+  }
+  
 EOF
 
-echo "The docker-compose.yaml has been created successfully."
+docker run -d \
+  --name ddns-updater \
+  -e CONFIG=/updater/config.json \
+  -v /path/to/your/config:/updater/config.json \
+  qmcgaw/ddns-updater
+
+
 
 docker compose up -d
 docker ps
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
-
-
-    # ports:
-    #   - $ddns_updater_port:8000/tcp
-
-#      # Web UI
-#   - LISTENING_ADDRESS=:$ddns_updater_port
-#   - ROOT_URL=/
-
-#   # Backup
-#   - BACKUP_PERIOD=0 # 0 to disable
-#   - BACKUP_DIRECTORY=/updater/data
-
-#   # Other
-#   - LOG_LEVEL=info
-#   - LOG_CALLER=hidden
-#   - SHOUTRRR_ADDRESSES=

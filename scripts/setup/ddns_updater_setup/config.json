@@ -1,0 +1,30 @@
+{
+    "settings": [
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "@", 
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      },
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "subdomain1",
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      },
+      {
+        "provider": "infomaniak",
+        "domain": "example.com",
+        "host": "subdomain2",
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      }
+    ],
+    "period": 300
+  }
+  
