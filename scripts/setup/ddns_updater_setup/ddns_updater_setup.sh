@@ -23,37 +23,37 @@ do
   
 done
 
+dns_provider=$(prompt "Enter the provider" "infomaniak")
+dns_domain=$(prompt "Enter the root domain" "example.com")
+
 cat <<EOF > $ddns_updater_volume
 {
     "settings": [
       {
-        "provider": "infomaniak",
-        "domain": "example.com",
+        "provider": "$provider",
+        "domain": "$dns_domain",
         "host": "@", 
         "username": "your-infomaniak-username",
         "password": "your-infomaniak-api-key",
         "ip_version": "ipv4"
-      },
-      {
-        "provider": "infomaniak",
+      }
+EOF
+
+cat <<EOF >> $ddns_updater_volume
+      ,{
+        "provider": "$provider",
         "domain": "example.com",
         "host": "subdomain1",
         "username": "your-infomaniak-username",
         "password": "your-infomaniak-api-key",
         "ip_version": "ipv4"
-      },
-      {
-        "provider": "infomaniak",
-        "domain": "example.com",
-        "host": "subdomain2",
-        "username": "your-infomaniak-username",
-        "password": "your-infomaniak-api-key",
-        "ip_version": "ipv4"
       }
+EOF
+
+cat <<EOF >> $ddns_updater_volume
     ],
     "period": 300
   }
-  
 EOF
 
 docker run -d \
