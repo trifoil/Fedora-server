@@ -16,7 +16,8 @@ prompt() {
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
 ddns_updater_port=$(prompt "Enter the port number" "8094")
 
-mkdir $ddns_updater_volume
+
+mkdir -p $ddns_updater_volume
 
 
 
@@ -68,7 +69,7 @@ EOF
 docker run -d \
   --name ddns-updater \
   -e CONFIG=/updater/config.json \
-  -v /path/to/your/config:/updater/config.json \
+  -v $ddns_updater_volume/config.json:/updater/config.json \
   qmcgaw/ddns-updater
 
 
