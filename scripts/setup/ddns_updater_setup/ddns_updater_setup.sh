@@ -13,6 +13,10 @@ prompt() {
   echo "${input:-$default_value}"
 }
 
+
+
+
+
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
 ddns_updater_port=$(prompt "Enter the port number" "8094")
 
@@ -65,6 +69,29 @@ cat <<EOF >> $ddns_updater_volume/config.json
   }
 EOF
 
+
+cat <<EOF > docker-compose.yaml
+
+services:
+  ddns-updater:
+    image: qmcgaw/ddns-updater
+    container_name: ddns-updater
+    network_mode: bridge
+    ports:
+      - 8000:8000/tcp
+    volumes:
+      - ./data:/updater/data
+    environment:
+      -  CONFIG={"settings":[{"provider":"strato","domain":"mydomain","host":"test,cloud","password":"mypassword"}]}
+      -  PERIOD=5m
+      -  IP_METHOD=cycle
+      -  IPV4_METHOD=cycle
+      -  IPV6_METHOD=cycle
+      -  HTTP_TIMEOUT=10s
+      -  LISTENING_PORT=8000
+      -  ROOT_URL=/
+    restart: always
+EOF
 
 docker run -d \
   --name ddns-updater \
