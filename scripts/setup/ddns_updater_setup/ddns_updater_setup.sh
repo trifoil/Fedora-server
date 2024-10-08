@@ -18,20 +18,17 @@ ddns_updater_port=$(prompt "Enter the port number" "8094")
 
 mkdir $ddns_updater_volume
 
-while [ in_menu = true ]
-do 
-  
-done
+
 
 dns_provider=$(prompt "Enter the provider" "infomaniak")
-dns_domain=$(prompt "Enter the root domain" "example.com")
+root_domain=$(prompt "Enter the root domain" "example.com")
 
 cat <<EOF > $ddns_updater_volume
 {
     "settings": [
       {
-        "provider": "$provider",
-        "domain": "$dns_domain",
+        "provider": "$dns_provider",
+        "domain": "$root_domain",
         "host": "@", 
         "username": "your-infomaniak-username",
         "password": "your-infomaniak-api-key",
@@ -39,22 +36,34 @@ cat <<EOF > $ddns_updater_volume
       }
 EOF
 
-cat <<EOF >> $ddns_updater_volume
+add_subdomains=true
+
+while $add_subdomains; do
+  add_more=$(prompt "Do you want to add another subdomain? (yes/no)" "no")
+  
+  if [ "$add_more" == "yes" ]; then
+    subdomain=$(prompt "Enter the subdomain" "subdomain.example.com")
+    cat <<EOF >> $ddns_updater_volume
       ,{
-        "provider": "$provider",
-        "domain": "example.com",
-        "host": "subdomain1",
+        "provider": "$dns_provider",
+        "domain": "$root_domain",
+        "host": "$subdomain",
         "username": "your-infomaniak-username",
         "password": "your-infomaniak-api-key",
         "ip_version": "ipv4"
       }
 EOF
+  else
+    add_subdomains=false
+  fi
+done
 
 cat <<EOF >> $ddns_updater_volume
     ],
     "period": 300
   }
 EOF
+
 
 docker run -d \
   --name ddns-updater \
