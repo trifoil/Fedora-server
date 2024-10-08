@@ -69,7 +69,7 @@ EOF
 docker run -d \
   --name ddns-updater \
   -e CONFIG=/updater/config.json \
-  -v $ddns_updater_volume/config.json:/updater/config.json \
+  -v $ddns_updater_volume:/updater \
   qmcgaw/ddns-updater
 
 
