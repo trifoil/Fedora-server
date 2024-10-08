@@ -16,12 +16,15 @@ prompt() {
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
 ddns_updater_port=$(prompt "Enter the port number" "8094")
 
+
 mkdir -p $ddns_updater_volume
+
+
 
 dns_provider=$(prompt "Enter the provider" "infomaniak")
 root_domain=$(prompt "Enter the root domain" "example.com")
 
-cat <<EOF > $ddns_updater_volume
+cat <<EOF > $ddns_updater_volume/config.json
 {
     "settings": [
       {
@@ -33,6 +36,43 @@ cat <<EOF > $ddns_updater_volume
         "ip_version": "ipv4"
       }
 EOF
+
+add_subdomains=true
+
+while $add_subdomains; do
+  add_more=$(prompt "Do you want to add another subdomain? (yes/no)" "no")
+  
+  if [ "$add_more" == "yes" ]; then
+    subdomain=$(prompt "Enter the subdomain" "subdomain.example.com")
+    cat <<EOF >> $ddns_updater_volume/config.json
+      ,{
+        "provider": "$dns_provider",
+        "domain": "$root_domain",
+        "host": "$subdomain",
+        "username": "your-infomaniak-username",
+        "password": "your-infomaniak-api-key",
+        "ip_version": "ipv4"
+      }
+EOF
+  else
+    add_subdomains=false
+  fi
+done
+
+cat <<EOF >> $ddns_updater_volume/config.json
+    ],
+    "period": 300
+  }
+EOF
+
+
+docker run -d \
+  --name ddns-updater \
+  -e CONFIG=/updater/config.json \
+  -v $ddns_updater_volume/config.json:/updater/config.json \
+  qmcgaw/ddns-updater
+
+
 
 docker compose up -d
 docker ps
