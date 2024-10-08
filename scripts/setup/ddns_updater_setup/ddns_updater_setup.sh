@@ -69,6 +69,8 @@ cat <<EOF >> $ddns_updater_volume/config.json
   }
 EOF
 
+echo "The config.json has been created successfully."
+
 
 cat <<EOF > docker-compose.yaml
 
@@ -93,12 +95,7 @@ services:
     restart: always
 EOF
 
-docker run -d \
-  --name ddns-updater \
-  -e CONFIG=/updater/config.json \
-  -v $ddns_updater_volume:/updater \
-  qmcgaw/ddns-updater
-
+echo "The docker-compose.yaml has been created successfully."
 
 
 docker compose up -d
