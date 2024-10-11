@@ -83,7 +83,7 @@ services:
   ddns-updater:
     image: qmcgaw/ddns-updater
     container_name: ddns-updater
-    network_mode: host
+    network_mode: bridge
     ports:
       - $ddns_updater_port:8000/tcp
     volumes:
