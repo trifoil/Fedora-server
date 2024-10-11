@@ -95,7 +95,7 @@ services:
       - IPV4_METHOD=cycle
       - IPV6_METHOD=cycle
       - HTTP_TIMEOUT=10s
-      - LISTENING_PORT=8000
+      - LISTENING_PORT=$ddns_updater_port
       - ROOT_URL=/
     restart: always
     privileged: true
