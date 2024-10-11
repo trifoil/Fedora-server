@@ -18,8 +18,7 @@ prompt() {
 
 sotf_volume=$(prompt "Enter the volume for the sotf server" "/storage/sotf")
 
-cat <<EOF > $ddns_updater_volume/config.json
-
+cat <<EOF > docker-compose.yaml
 version: '3.9'
 services:
   sons-of-the-forest-dedicated-server:
