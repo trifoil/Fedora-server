@@ -98,6 +98,8 @@ services:
       - LISTENING_PORT=8000
       - ROOT_URL=/
     restart: always
+    privileged: true
+
 EOF
 
 echo "The docker-compose.yaml has been created successfully."
