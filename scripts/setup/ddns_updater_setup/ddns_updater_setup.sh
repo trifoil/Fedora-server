@@ -88,7 +88,6 @@ services:
       - $ddns_updater_port:8000/tcp
     volumes:
       - $ddns_updater_volume:/updater/data
-      - $ddns_updater_volume/updates.json:/updater/data/updates.json
     environment:
       - CONFIG_FILE=/updater/data/config.json
       - PERIOD=5m
