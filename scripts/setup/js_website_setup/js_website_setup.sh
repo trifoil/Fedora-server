@@ -26,6 +26,8 @@ services:
       - "$js_website_port:80"
     volumes:
       - $js_website_volume:/usr/share/nginx/html:ro
+    restart: always
+
 EOF
 
 echo "The docker-compose.yaml has been created successfully."
