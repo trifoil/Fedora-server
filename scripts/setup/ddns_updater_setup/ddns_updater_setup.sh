@@ -18,7 +18,7 @@ prompt() {
 
 # Prompt for DDNS updater volume and port
 ddns_updater_volume=$(prompt "Enter the volume for ddns updater" "/storage/ddns_updater")
-ddns_updater_port=$(prompt "Enter the port number" "8094")
+ddns_updater_port=$(prompt "Enter the port number" "8000")
 
 # Create the volume directory
 mkdir -p $ddns_updater_volume
@@ -83,7 +83,7 @@ services:
   ddns-updater:
     image: qmcgaw/ddns-updater
     container_name: ddns-updater
-    network_mode: bridge
+    network_mode: host
     ports:
       - $ddns_updater_port:8000/tcp
     volumes:
