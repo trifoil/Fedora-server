@@ -102,12 +102,13 @@ services:
 
 EOF
 
-chmod 755 $ddns_updater_volume
 
 echo "The docker-compose.yaml has been created successfully."
 
 # Start the docker container
 docker compose up -d
+
+chmod 755 $ddns_updater_volume
 
 # Show running containers
 docker ps
