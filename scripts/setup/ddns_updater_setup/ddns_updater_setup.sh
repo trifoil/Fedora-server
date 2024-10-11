@@ -97,16 +97,12 @@ services:
       - HTTP_TIMEOUT=10s
       - LISTENING_PORT=$ddns_updater_port
       - ROOT_URL=/
-    entrypoint: |
-      sh -c "
-      chown -R 1000:1000 /updater/data && 
-      chmod -R 755 /updater/data &&
-      /entrypoint.sh
-      "
     restart: always
     privileged: true
 
 EOF
+
+chmod 755 $ddns_updater_volume
 
 echo "The docker-compose.yaml has been created successfully."
 
