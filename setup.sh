@@ -23,10 +23,10 @@ display_menu() {
     echo "|  7. Setup Vanilla JS Website                                          |"
     echo "|  8. Setup DDNS Updater                                                |"
     echo "|  9. Setup SOTF (sons of the forest) Server                            |"
-    echo "| 10. Setup SOTF (sons of the forest) Server                            |"
-    echo "|----------------------------------------------------------------------|"
-    echo "| q. Exit                                                              |"
-    echo "|----------------------------------------------------------------------|"
+    echo "| 10. Setup VPN                                                         |"
+    echo "|-----------------------------------------------------------------------|"
+    echo "|  q. Exit                                                              |"
+    echo "|-----------------------------------------------------------------------|"
     echo ""
 }
 
