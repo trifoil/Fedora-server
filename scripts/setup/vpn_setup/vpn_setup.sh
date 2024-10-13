@@ -14,45 +14,46 @@ prompt() {
   echo "${input:-$default_value}"
 }
 
-vpn_domain=$(prompt "Enter your domain for the vpn" "")
+vpn_domain=$(prompt "Enter your domain for the vpn service" "vpn.example.com")
+vpn_volume=$(prompt "Enter the volume for the vpn service" "/storage/vpn")
+vpn_port=$(prompt "Enter the port for the vpn service" "8080")
 
 cat <<EOF > docker-compose.yaml
-version: '3.8'
 
 services:
-  # WireGuard VPN service
   wireguard:
     image: linuxserver/wireguard
     container_name: wireguard
     cap_add:
       - NET_ADMIN
-      - SYS_MODULE
     environment:
-      - PUID=1000   # Replace with your user ID
-      - PGID=1000   # Replace with your group ID
-      - TZ=Europe/Brussels  # Set your timezone
-      - SERVERURL=your_server_domain_or_ip
-      - SERVERPORT=51820  # WireGuard server port (local UDP)
-      - PEERS=1  # Number of peers (clients)
+      - PUID=1000  # Adjust this according to your user
+      - PGID=1000  # Adjust this according to your group
+      - TZ=Europe/Brussels
+      - SERVERURL=$vpn_domain
+      - SERVERPORT=51820
+      - PEERS=2
       - PEERDNS=auto
-      - INTERNAL_SUBNET=10.13.13.0  # Internal WireGuard subnet
     volumes:
-      - ./config/wireguard:/config
-      - /lib/modules:/lib/modules
+      - $vpn_volume/wireguard:/config
+      - /lib/modules:/lib/modules:ro
+    ports:
+      - "51820:51820/udp"
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
-      - net.ipv4.ip_forward=1
     restart: unless-stopped
 
-  # wstunnel service to tunnel WireGuard traffic
   wstunnel:
-    image: npateriy/wstunnel
+    image: erebe/wstunnel:latest
     container_name: wstunnel
-    command: >
-      --udp 0.0.0.0:8443:127.0.0.1:51820  # Expose WireGuard over WebSockets on port 8443
-    ports:
-      - 8443:8443  # Expose the WebSocket tunnel on TCP port 8443
+    command: wstunnel --server wss://0.0.0.0:8080 --restrictTo=127.0.0.1:51820
     restart: unless-stopped
+    ports:
+      - "$vpn_port:8080"
+
+networks:
+  default:
+    external: true
 
 EOF
 
