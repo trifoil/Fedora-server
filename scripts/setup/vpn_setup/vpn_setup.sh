@@ -57,4 +57,10 @@ networks:
 
 EOF
 
-#https://chatgpt.com/share/66ec33df-4800-8010-8af6-1df1e6bd309f
+echo "The docker-compose.yaml has been created successfully."
+
+docker compose up -d
+
+docker ps
+
+read -n 1 -s -r -p "Done. Press any key to continue..."
