@@ -53,6 +53,12 @@ services:
       - "$vpn_port:8080"
     networks:
       - vpn-network
+
+networks:
+  vpn-network:
+    driver: bridge
+
+
 EOF
 
 echo "The docker-compose.yaml has been created successfully."
