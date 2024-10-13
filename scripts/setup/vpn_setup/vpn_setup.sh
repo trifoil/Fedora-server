@@ -43,8 +43,6 @@ services:
       - /lib/modules:/lib/modules:ro
     ports:
       - "51820:51820/udp"
-    extra_hosts:
-      - "iptables-nft:iptables" # Passthrough for nftables compatibility
     restart: unless-stopped
 
   wstunnel:
