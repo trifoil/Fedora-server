@@ -45,7 +45,7 @@ services:
     networks:
       - vpn-network
   wstunnel:
-    image: ghcr.io/erebe/wstunnel:latest
+    image: mhzed/wstunnel
     container_name: wstunnel
     command: wstunnel --server wss://0.0.0.0:8080 --restrictTo=127.0.0.1:51820
     restart: unless-stopped
