@@ -27,8 +27,8 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - PUID=1000  # Adjust this according to your user
-      - PGID=1000  # Adjust this according to your group
+      - PUID=1000
+      - PGID=1000
       - TZ=Europe/Brussels
       - SERVERURL=$vpn_domain
       - SERVERPORT=51820
@@ -39,21 +39,23 @@ services:
       - /lib/modules:/lib/modules:ro
     ports:
       - "51820:51820/udp"
-    sysctls:
-      - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
-    networks:
-      - vpn-network
-  wstunnel:
-    image: mhzed/wstunnel
-    container_name: wstunnel
-    command: wstunnel --server wss://0.0.0.0:8080 --restrictTo=127.0.0.1:51820
-    restart: unless-stopped
-    ports:
-      - "$vpn_port:8080"
-    networks:
-      - vpn-network
 
+  wstunnel:
+    image: mhzed/wstunnel:latest
+    container_name: wstunnel
+    environment:
+      - LISTEN_PORT=80 # The port on which WSTunnel will listen
+      - CONNECT_HOST=wireguard # Internal DNS name of WireGuard container
+      - CONNECT_PORT=51820 # WireGuard's port that WSTunnel will tunnel traffic to
+      - MODE=server # Run WSTunnel in server mode
+    ports:
+      - "$vpn_port:80" # Public WebSocket port (can configure SSL via NPM)
+    restart: unless-stopped
+    depends_on:
+      - wireguard
+
+z
 networks:
   vpn-network:
     driver: bridge
