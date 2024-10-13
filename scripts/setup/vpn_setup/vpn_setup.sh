@@ -51,10 +51,6 @@ services:
     ports:
       - "$vpn_port:8080"
 
-networks:
-  default:
-    external: true
-
 EOF
 
 echo "The docker-compose.yaml has been created successfully."
