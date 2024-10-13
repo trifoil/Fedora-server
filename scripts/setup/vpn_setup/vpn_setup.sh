@@ -42,7 +42,8 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
-
+    networks:
+      - vpn-network
   wstunnel:
     image: ghcr.io/erebe/wstunnel:latest
     container_name: wstunnel
@@ -50,7 +51,8 @@ services:
     restart: unless-stopped
     ports:
       - "$vpn_port:8080"
-
+    networks:
+      - vpn-network
 EOF
 
 echo "The docker-compose.yaml has been created successfully."
