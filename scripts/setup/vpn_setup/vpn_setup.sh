@@ -46,24 +46,14 @@ services:
     restart: unless-stopped
 
   wstunnel:
-    image: mhzed/wstunnel:latest
+    image: ghcr.io/erebe/wstunnel:latest
     container_name: wstunnel
-    environment:
-      - LISTEN_PORT=80 # The port on which WSTunnel will listen
-      - CONNECT_HOST=wireguard # Internal DNS name of WireGuard container
-      - CONNECT_PORT=51820 # WireGuard's port that WSTunnel will tunnel traffic to
-      - MODE=server # Run WSTunnel in server mode
+    command: wstunnel server ws://0.0.0.0:$vpn_port --restrict-to "127.0.0.1:51820"
     ports:
-      - "$vpn_port:80" # Public WebSocket port (can configure SSL via NPM)
-    restart: unless-stopped
+      - "$vpn_port:$vpn_port/tcp"
     depends_on:
       - wireguard
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
+    restart: unless-stopped
 
 EOF
 
