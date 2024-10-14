@@ -58,6 +58,12 @@ services:
     restart: unless-stopped
     depends_on:
       - wireguard
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
 
 EOF
 
