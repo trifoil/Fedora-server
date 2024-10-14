@@ -45,15 +45,6 @@ services:
       - "51820:51820/udp"
     restart: unless-stopped
 
-  wstunnel:
-    image: ghcr.io/erebe/wstunnel:latest
-    container_name: wstunnel
-    command: wstunnel server wss://0.0.0.0:$vpn_port --restrict-to "127.0.0.1:51820"
-    ports:
-      - "$vpn_port:$vpn_port/tcp"
-    depends_on:
-      - wireguard
-    restart: unless-stopped
 
 EOF
 
