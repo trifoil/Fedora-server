@@ -48,7 +48,7 @@ services:
   wstunnel:
     image: ghcr.io/erebe/wstunnel:latest
     container_name: wstunnel
-    command: wstunnel server ws://0.0.0.0:$vpn_port --restrict-to "127.0.0.1:51820"
+    command: wstunnel server wss://0.0.0.0:$vpn_port --restrict-to "127.0.0.1:51820"
     ports:
       - "$vpn_port:$vpn_port/tcp"
     depends_on:
