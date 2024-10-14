@@ -23,7 +23,8 @@ display_menu() {
     echo "|  7. Setup Vanilla JS Website                                          |"
     echo "|  8. Setup DDNS Updater                                                |"
     echo "|  9. Setup SOTF (sons of the forest) Server                            |"
-    echo "| 10. Setup VPN                                                         |"
+    echo "| 10. Setup VPN (wireguard)                                             |"
+    echo "| 11. Setup VPN tunneling (wstunnel)                                    |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"
@@ -70,8 +71,12 @@ setup_sotf(){
     sh scripts/setup/sotf_server_setup/sotf_server_setup.sh
 }
 
-setup_vpn(){
-    sh scripts/setup/vpn_setup/vpn_setup.sh
+setup_wireguard(){
+    sh scripts/setup/wireguard_setup/wireguard_setup.sh
+}
+
+setup_wstunnel(){
+    sh scripts/setup/wstunnel_setup/wstunnel_setup.sh
 }
 
 main() {
@@ -89,7 +94,8 @@ main() {
             7) setup_vanilla_js_website ;;
             8) setup_ddns_updater ;;
             9) setup_sotf ;;
-            10) setup_vpn ;;
+            10) setup_wireguard ;;
+            11) setup_wstunnel ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac

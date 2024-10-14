@@ -14,9 +14,8 @@ prompt() {
   echo "${input:-$default_value}"
 }
 
-vpn_domain=$(prompt "Enter your domain for the vpn service" "vpn.example.com")
-vpn_volume=$(prompt "Enter the volume for the vpn service" "/storage/vpn")
-vpn_port=$(prompt "Enter the port for the vpn service" "8080")
+vpn_domain=$(prompt "Enter your domain for the wireguard" "vpn.example.com")
+vpn_volume=$(prompt "Enter the volume for the wireguard" "/storage/wireguard")
 
 sudo update-alternatives --set iptables /usr/sbin/iptables-nft
 sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
@@ -44,7 +43,6 @@ services:
     ports:
       - "51820:51820/udp"
     restart: unless-stopped
-
 
 EOF
 
