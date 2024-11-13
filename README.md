@@ -22,16 +22,16 @@ Admin services :
 - [x] Portainer
 - [x]  Nginx Proxy Manager
 - [x]  DDNS updater
-- [] Uptime-kuma
+- [ ] Uptime-kuma
 - [x]  FileBrowser
-- [] OpenVPN
+- [ ] OpenVPN
 
 User services :
 
 - [x]  Nextcloud AIO
 - [x]  Jellyfin
 - [x]  Deluge
-- []  Gitbucket
+- [ ]  Gitbucket
 
 ## Sources
 
