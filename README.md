@@ -1,5 +1,7 @@
 # Fedora-server
 
+Homelab install tailored for personal use, under fedora, but most probably compatible with a lot of distros
+
 ## Quick start
 
 ```
@@ -39,4 +41,5 @@ User services :
 * https://github.com/pgollor/gitbucket-docker/tree/master
 * https://github.com/qdm12/ddns-updater/blob/master/docker-compose.yml
 * https://github.com/element-hq/synapse/blob/develop/contrib/docker/docker-compose.yml
-
+* https://github.com/OpenVPN/as-docker
+* https://github.com/pgollor/gitbucket-docker/blob/master/docker-compose.yml

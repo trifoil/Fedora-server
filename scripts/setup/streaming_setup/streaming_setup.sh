@@ -64,8 +64,6 @@ networks:
 
 EOF
 
-echo "docker-compose.yaml file has been generated successfully."
-
 echo "The docker-compose.yml has been created successfully."
 
 docker compose up -d
