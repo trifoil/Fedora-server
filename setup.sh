@@ -71,7 +71,7 @@ setup_sotf(){
 }
 
 setup_openvpn(){
-    sh scripts/setup/wireguard_setup/wireguard_setup.sh
+    sh scripts/setup/openvpn_setup/openvpn_setup.sh
 }
 
 main() {
