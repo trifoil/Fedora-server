@@ -11,27 +11,27 @@ cd ..
 clear
 ```
 
-## Available in the bundle :
+## What's included :
 
-Installed from the script and ```required``` for the following services : 
+Installed from the script and ```required``` for the other services : 
 
-* Docker
+* Docker (install it through this script, that follows the official way)
 
 Admin services :
 
-* Portainer
-* Nginx Proxy Manager
-* DDNS updater
-* Uptime-kuma
-* FileBrowser
+- [x] Portainer
+- [x]  Nginx Proxy Manager
+- [x]  DDNS updater
+- [] Uptime-kuma
+- [x]  FileBrowser
+- [] OpenVPN
 
 User services :
 
-* Nextcloud AIO
-* Streaming
-    * Jellyfin
-    * Deluge
-* Gitbucket
+- [x]  Nextcloud AIO
+- [x]  Jellyfin
+- [x]  Deluge
+- []  Gitbucket
 
 ## Sources
 
