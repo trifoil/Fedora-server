@@ -17,6 +17,8 @@ zabbix_port=$(prompt "Enter the port for the zabbix server" "8081")
 
 
 cat <<EOF > docker-compose.yaml
+version: '3.5'
+
 services:
   mysql-server:
     image: mysql:8.0
