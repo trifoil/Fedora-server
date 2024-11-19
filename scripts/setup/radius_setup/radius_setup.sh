@@ -5,52 +5,65 @@ echo "Now installing radius"
 echo "Updating ... "
 dnf update -y
 
-mkdir -p /storage/radius/{radius-config,radius-data,daloradius-config,mysql-data}
+
 
 cat <<EOF > docker-compose.yaml
-version: '3.8'
+version: '3.7'
+
 services:
   freeradius:
     image: freeradius/freeradius-server:latest
     container_name: freeradius
-    ports:
-      - "1812:1812/udp"  # RADIUS authentication port
-      - "1813:1813/udp"  # RADIUS accounting port
     environment:
-      - FREERADIUS_DEBUG=yes
+      - MYSQL_HOST=freeradius-db
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radius
+      - MYSQL_DB=radius
     volumes:
-      - /storage/radius/radius-config:/etc/raddb  # RADIUS configuration folder
-      - /storage/radius/radius-data:/var/lib/radius  # Persisted RADIUS data
-    restart: unless-stopped
-
-  daloradius:
-    image: instrumentationlabs/daloradius
-    container_name: daloradius
+      - ./freeradius/config:/etc/freeradius/3.0
     ports:
-      - "8080:80"  # Web interface accessible on http://localhost:8080
-    environment:
-      - DB_HOST=radius-mysql
-      - DB_PORT=3306
-      - DB_USER=radius
-      - DB_PASS=radiuspassword
-      - DB_NAME=radius
+      - "1812:1812"
+      - "1813:1813"
     depends_on:
-      - radius-mysql
-    volumes:
-      - /storage/radius/daloradius-config:/var/www/html/daloradius/library/daloradius.conf.php  # Optional customization
-    restart: unless-stopped
+      - freeradius-db
+    networks:
+      - freeradius-net
 
-  radius-mysql:
-    image: mariadb:latest
-    container_name: radius-mysql
+  freeradius-admin:
+    image: junelsolis/freeradius-admin:latest
+    container_name: freeradius-admin
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: radius
-      MYSQL_USER: radius
-      MYSQL_PASSWORD: radiuspassword
+      - DB_HOST=freeradius-db
+      - DB_USER=radius
+      - DB_PASSWORD=radius
+      - DB_NAME=radius
+      - APP_URL=http://localhost:8000
+    ports:
+      - "8000:80"
+    depends_on:
+      - freeradius-db
+    networks:
+      - freeradius-net
+
+  freeradius-db:
+    image: mysql:5.7
+    container_name: freeradius-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radius
     volumes:
-      - /storage/radius/mysql-data:/var/lib/mysql  # Persisted database data
-    restart: unless-stopped
+      - freeradius-db-data:/var/lib/mysql
+    networks:
+      - freeradius-net
+
+networks:
+  freeradius-net:
+    driver: bridge
+
+volumes:
+  freeradius-db-data:
 
 EOF
 
