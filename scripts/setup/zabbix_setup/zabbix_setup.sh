@@ -17,69 +17,77 @@ zabbix_port=$(prompt "Enter the port for the zabbix server" "8081")
 
 
 cat <<EOF > docker-compose.yaml
+version: '3.5'
+
 services:
-  db:
-    image: mariadb:10.5
+  mysql-server:
+    image: mysql:8.0
+    container_name: mysql-server
     environment:
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: zabbix_pass
-      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_PASSWORD: zabbix_pwd
+      MYSQL_ROOT_PASSWORD: root_pwd
+    command: --character-set-server=utf8 --collation-server=utf8_bin --default-authentication-plugin=mysql_native_password
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     networks:
-      - zabbix-net
-
+      - zabbix-network
+    restart: unless-stopped
 
   zabbix-server:
-    image: zabbix/zabbix-server-mysql:latest
+    image: zabbix/zabbix-server-mysql:alpine-7.0-latest
+    container_name: zabbix-server
     environment:
-      DB_SERVER_HOST: db
+      DB_SERVER_HOST: mysql-server
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: zabbix_pass
-      MYSQL_ROOT_PASSWORD: root_pass
-    depends_on:
-      - db
+      MYSQL_PASSWORD: zabbix_pwd
+      MYSQL_ROOT_PASSWORD: root_pwd
     ports:
-      - "10050:10050"
-    networks:
-      - zabbix-net
-
-
-  zabbix-agent:
-    image: zabbix/zabbix-agent:latest
-    environment:
-      ZBX_SERVER_HOST: zabbix-server
-      ZBX_HOSTNAME: zabbix-agent
+      - "10051:10051"
     depends_on:
-      - zabbix-server
+      - mysql-server
     networks:
-      - zabbix-net
-
+      - zabbix-network
+    restart: unless-stopped
 
   zabbix-web:
-    image: zabbix/zabbix-web-nginx-mysql:latest
+    image: zabbix/zabbix-web-nginx-mysql:alpine-7.0-latest
+    container_name: zabbix-web
     environment:
-      DB_SERVER_HOST: db
+      ZBX_SERVER_HOST: zabbix-server
+      DB_SERVER_HOST: mysql-server
       MYSQL_DATABASE: zabbix
       MYSQL_USER: zabbix
-      MYSQL_PASSWORD: zabbix_pass
-      ZBX_SERVER_HOST: zabbix-server
-      PHP_TZ: Europe/Paris
+      MYSQL_PASSWORD: zabbix_pwd
+      MYSQL_ROOT_PASSWORD: root_pwd
     ports:
-      - "8081:8080"
+      - "80:8080"
     depends_on:
-      - db
       - zabbix-server
     networks:
-      - zabbix-net
+      - zabbix-network
+    restart: unless-stopped
 
-volumes:
-  mysql_data:
+  zabbix-agent:
+    image: zabbix/zabbix-agent:alpine-7.0-latest
+    container_name: zabbix-agent
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+      HOSTNAME: docker-agent
+    ports:
+      - "10050:10050"
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix-network
+    restart: unless-stopped
 
 networks:
-  zabbix-net:
+  zabbix-network:
+    driver: bridge
+
 EOF
 
 echo "The docker-compose.yml has been created successfully."
