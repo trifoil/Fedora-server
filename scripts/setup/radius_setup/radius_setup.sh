@@ -5,16 +5,7 @@ echo "Now installing radius"
 echo "Updating ... "
 dnf update -y
 
-prompt() {
-  local prompt_message=$1
-  local default_value=$2
-  read -p "$prompt_message [$default_value]: " input
-  echo "${input:-$default_value}"
-}
-
-radius_volume=$(prompt "Enter the volume for the zabbix config" "/storage/radius")
-radius_port=$(prompt "Enter the port for the zabbix server" "8080")
-
+mkdir -p /storage/radius/{radius-config,radius-data,daloradius-config,mysql-data}
 
 cat <<EOF > docker-compose.yaml
 version: '3.8'
@@ -28,8 +19,8 @@ services:
     environment:
       - FREERADIUS_DEBUG=yes
     volumes:
-      - ./radius-config:/etc/raddb  # Replace with your RADIUS configuration folder
-      - ./radius-data:/var/lib/radius # Persisted data (optional)
+      - /storage/radius/radius-config:/etc/raddb  # RADIUS configuration folder
+      - /storage/radius/radius-data:/var/lib/radius  # Persisted RADIUS data
     restart: unless-stopped
 
   daloradius:
@@ -46,7 +37,7 @@ services:
     depends_on:
       - radius-mysql
     volumes:
-      - ./daloradius-config:/var/www/html/daloradius/library/daloradius.conf.php  # Optional customization
+      - /storage/radius/daloradius-config:/var/www/html/daloradius/library/daloradius.conf.php  # Optional customization
     restart: unless-stopped
 
   radius-mysql:
@@ -58,7 +49,7 @@ services:
       MYSQL_USER: radius
       MYSQL_PASSWORD: radiuspassword
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - /storage/radius/mysql-data:/var/lib/mysql  # Persisted database data
     restart: unless-stopped
 
 EOF
