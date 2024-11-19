@@ -74,6 +74,10 @@ setup_openvpn(){
     sh scripts/setup/openvpn_setup/openvpn_setup.sh
 }
 
+setup_zabbix(){
+    sh scripts/setup/zabbix_setup/zabbix_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -90,6 +94,7 @@ main() {
             8) setup_ddns_updater ;;
             9) setup_sotf ;;
             10) setup_openvpn ;;
+            11) setup_zabbix ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
