@@ -42,9 +42,21 @@ services:
     depends_on:
       - db
     ports:
-      - "10051:10051"
+      - "10050:10050"
     networks:
       - zabbix-net
+
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent:latest
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+      ZBX_HOSTNAME: zabbix-agent
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix-net
+
 
   zabbix-web:
     image: zabbix/zabbix-web-nginx-mysql:latest
