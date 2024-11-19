@@ -24,6 +24,8 @@ display_menu() {
     echo "|  8. Setup DDNS Updater                                                |"
     echo "|  9. Setup SOTF (sons of the forest) Server                            |"
     echo "| 10. Setup OpenVPN VPN                                                 |"
+    echo "| 11. Setup Zabbix server                                               |"
+    echo "| 12. Setup Radius server                                               |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"

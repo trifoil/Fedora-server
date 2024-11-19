@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-echo "Now installing OpenVPN"
+echo "Now installing radius"
 echo "Updating ... "
 dnf update -y
 
