@@ -6,6 +6,7 @@ Homelab install tailored for personal use, under fedora, but most probably compa
 
 ```
 rm -rf Fedora-server
+sudo dnf install git -y
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server
 sudo sh main.sh
