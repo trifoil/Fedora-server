@@ -78,6 +78,10 @@ setup_zabbix(){
     sh scripts/setup/zabbix_setup/zabbix_setup.sh
 }
 
+setup_radius(){
+    sh scripts/setup/radius_setup/radius_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -95,6 +99,7 @@ main() {
             9) setup_sotf ;;
             10) setup_openvpn ;;
             11) setup_zabbix ;;
+            12) setup_radius ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
