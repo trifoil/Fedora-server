@@ -24,6 +24,8 @@ display_menu() {
     echo "|  8. Setup DDNS Updater                                                |"
     echo "|  9. Setup SOTF (sons of the forest) Server                            |"
     echo "| 10. Setup OpenVPN VPN                                                 |"
+    echo "| 11. Setup Zabbix server                                               |"
+    echo "| 12. Setup Radius server                                               |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"
@@ -74,6 +76,14 @@ setup_openvpn(){
     sh scripts/setup/openvpn_setup/openvpn_setup.sh
 }
 
+setup_zabbix(){
+    sh scripts/setup/zabbix_setup/zabbix_setup.sh
+}
+
+setup_radius(){
+    sh scripts/setup/radius_setup/radius_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -90,6 +100,8 @@ main() {
             8) setup_ddns_updater ;;
             9) setup_sotf ;;
             10) setup_openvpn ;;
+            11) setup_zabbix ;;
+            12) setup_radius ;;
             q) echo "Bye loser!" && clear && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
