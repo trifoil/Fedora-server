@@ -5,7 +5,10 @@ echo "Now installing radius"
 echo "Updating ... "
 dnf update -y
 
+git clone https://github.com/junelsolis/freeradius-admin.git
+cd freeradius-admin
 
+docker build -t freeradius-admin .
 
 cat <<EOF > docker-compose.yaml
 version: '3.7'
@@ -30,7 +33,7 @@ services:
       - freeradius-net
 
   freeradius-admin:
-    image: junelsolis/freeradius-admin:latest
+    image: freeradius-admin
     container_name: freeradius-admin
     environment:
       - DB_HOST=freeradius-db
@@ -64,12 +67,11 @@ networks:
 
 volumes:
   freeradius-db-data:
-
 EOF
 
 echo "The docker-compose.yml has been created successfully."
 
-docker compose up -d
+docker compose up --build -d
 docker ps
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
