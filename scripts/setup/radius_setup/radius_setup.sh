@@ -5,68 +5,75 @@ echo "Now installing radius"
 echo "Updating ... "
 dnf update -y
 
-git clone https://github.com/junelsolis/freeradius-admin.git
-cd freeradius-admin
-
-docker build -t freeradius-admin .
 
 cat <<EOF > docker-compose.yaml
-version: '3.7'
+version: "3"
 
 services:
-  freeradius:
-    image: freeradius/freeradius-server:latest
-    container_name: freeradius
-    environment:
-      - MYSQL_HOST=freeradius-db
-      - MYSQL_USER=radius
-      - MYSQL_PASSWORD=radius
-      - MYSQL_DB=radius
-    volumes:
-      - ./freeradius/config:/etc/freeradius/3.0
-    ports:
-      - "1812:1812"
-      - "1813:1813"
-    depends_on:
-      - freeradius-db
-    networks:
-      - freeradius-net
 
-  freeradius-admin:
-    image: freeradius-admin
-    container_name: freeradius-admin
+  radius-mysql:
+    image: mariadb:10
+    container_name: radius-mysql
+    restart: unless-stopped
     environment:
-      - DB_HOST=freeradius-db
-      - DB_USER=radius
-      - DB_PASSWORD=radius
-      - DB_NAME=radius
-      - APP_URL=http://localhost:8000
-    ports:
-      - "8000:80"
-    depends_on:
-      - freeradius-db
-    networks:
-      - freeradius-net
-
-  freeradius-db:
-    image: mysql:5.7
-    container_name: freeradius-db
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
       - MYSQL_DATABASE=radius
       - MYSQL_USER=radius
-      - MYSQL_PASSWORD=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      - MYSQL_ROOT_PASSWORD=radiusrootdbpw
     volumes:
-      - freeradius-db-data:/var/lib/mysql
-    networks:
-      - freeradius-net
+      - "./data/mysql:/var/lib/mysql"
 
-networks:
-  freeradius-net:
-    driver: bridge
+  radius:
+    container_name: radius
+    build:
+      context: .
+      dockerfile: Dockerfile-freeradius
+    restart: unless-stopped
+    depends_on: 
+      - radius-mysql
+    ports:
+      - '1812:1812/udp'
+      - '1813:1813/udp'
+    environment:
+      - MYSQL_HOST=radius-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      # Optional settings
+      - DEFAULT_CLIENT_SECRET=testing123
+    volumes:
+      - ./storage/radius:/data  # Changed this line to point to storage/radius
+    # If you want to disable debug output, remove the command parameter
+    command: -X
 
-volumes:
-  freeradius-db-data:
+  radius-web:
+    build: .
+    container_name: radius-web
+    restart: unless-stopped
+    depends_on:
+      - radius
+      - radius-mysql
+    ports:
+      - '80:80'
+      - '8000:8000'
+    environment:
+      - MYSQL_HOST=radius-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      # Optional Settings:
+      - DEFAULT_CLIENT_SECRET=testing123
+      - DEFAULT_FREERADIUS_SERVER=radius
+      - MAIL_SMTPADDR=127.0.0.1
+      - MAIL_PORT=25
+      - MAIL_FROM=root@daloradius.xdsl.by
+      - MAIL_AUTH=
+
+    volumes:
+      - ./storage/radius:/data  # Changed this line to point to storage/radius
+
 EOF
 
 echo "The docker-compose.yml has been created successfully."
