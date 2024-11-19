@@ -17,8 +17,6 @@ zabbix_port=$(prompt "Enter the port for the zabbix server" "8081")
 
 
 cat <<EOF > docker-compose.yaml
-version: '3.5'
-
 services:
   mysql-server:
     image: mysql:8.0
@@ -30,7 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_pwd
     command: --character-set-server=utf8 --collation-server=utf8_bin --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./mysql:/var/lib/mysql
+      - /storage/zabbix/mysql:/var/lib/mysql
     networks:
       - zabbix-network
     restart: unless-stopped
@@ -44,6 +42,8 @@ services:
       MYSQL_USER: zabbix
       MYSQL_PASSWORD: zabbix_pwd
       MYSQL_ROOT_PASSWORD: root_pwd
+    volumes:
+      - /storage/zabbix/zabbix-server:/var/lib/zabbix
     ports:
       - "10051:10051"
     depends_on:
@@ -62,6 +62,8 @@ services:
       MYSQL_USER: zabbix
       MYSQL_PASSWORD: zabbix_pwd
       MYSQL_ROOT_PASSWORD: root_pwd
+    volumes:
+      - /storage/zabbix/zabbix-web:/usr/share/zabbix
     ports:
       - "80:8080"
     depends_on:
@@ -76,6 +78,8 @@ services:
     environment:
       ZBX_SERVER_HOST: zabbix-server
       HOSTNAME: docker-agent
+    volumes:
+      - /storage/zabbix/zabbix-agent:/var/lib/zabbix-agent
     ports:
       - "10050:10050"
     depends_on:
@@ -87,6 +91,7 @@ services:
 networks:
   zabbix-network:
     driver: bridge
+
 
 EOF
 
