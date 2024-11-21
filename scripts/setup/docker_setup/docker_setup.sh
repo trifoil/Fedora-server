@@ -12,7 +12,7 @@ dnf -y remove docker \
                   docker-engine
 
 dnf -y install dnf-plugins-core
-dnf -y config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf-3 -y config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo systemctl start docker
