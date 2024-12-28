@@ -15,22 +15,29 @@ display_menu() {
     echo "|-----------------------------------------------------------------------|"
     echo -e "|  0. Setup Docker                                             ${RED}REQUIRED ${NC}|"
     echo "|  1. Setup Portainer                                                   |"
-    echo "|  2. Setup NGINX Proxy Manager                                         |"
-    echo "|  3. Setup FileBrowser                                                 |"
-    echo "|  4. Setup Nextcloud AIO                                               |"
-    echo "|  5. Setup SurrealDB                                                   |"
-    echo "|  6. Setup Streaming (deluge + jellyfin)                               |"
-    echo "|  7. Setup Vanilla JS Website                                          |"
-    echo "|  8. Setup DDNS Updater                                                |"
-    echo "|  9. Setup SOTF (sons of the forest) Server                            |"
-    echo "| 10. Setup OpenVPN VPN                                                 |"
-    echo "| 11. Setup Zabbix server                                               |"
-    echo "| 12. Setup Outline VPN server                                          |"
+    echo "|  2. Setup Traefik                                                     |"
+    echo "|  3. Setup NGINX Proxy Manager                                         |"
+    echo "|  4. Setup Pi-hole                                                     |"
+    echo "|  5. Setup Custom VPN                                                  |"
+    echo "|  6. Setup HomeAssistant                                               |"
+    echo "|  7. Setup Nextcloud AIO                                               |"
+    echo "|  8. Setup SurrealDB                                                   |"
+    echo "|  9. Setup GitBucket                                                   |"
+    echo "| 10. Setup Matrix Server                                               |"
+    echo "| 11. Setup Alternative Monitoring Tool (e.g., Prometheus, Grafana)     |"
+    echo "| 12. Setup Vaultwarden                                                 |"
+    echo "| 13. Setup FileBrowser                                                 |"
+    echo "| 14. Setup Streaming (deluge + jellyfin)                               |"
+    echo "| 15. Setup Vanilla JS Website                                          |"
+    echo "| 16. Setup DDNS Updater                                                |"
+    echo "| 17. Setup SOTF (sons of the forest) Server                            |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"
     echo ""
 }
+
+
 
 setup_docker(){
     sh scripts/setup/docker_setup/docker_setup.sh
@@ -84,6 +91,10 @@ setup_outline(){
     sh scripts/setup/outline_vpn_setup/outline_vpn_setup.sh
 }
 
+setup_django(){
+    sh scripts/setup/django_setup/django_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -102,6 +113,7 @@ main() {
             10) setup_openvpn ;;
             11) setup_zabbix ;;
             12) setup_outline ;;
+            13) setup_django ;;
             q) clear && echo "Bye loser!" && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
