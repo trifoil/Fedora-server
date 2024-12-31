@@ -21,16 +21,15 @@ display_menu() {
     echo "|  5. Setup Custom VPN                                                  |"
     echo "|  6. Setup HomeAssistant                                               |"
     echo "|  7. Setup Nextcloud AIO                                               |"
-    echo "|  8. Setup SurrealDB                                                   |"
-    echo "|  9. Setup GitBucket                                                   |"
-    echo "| 10. Setup Matrix Server                                               |"
-    echo "| 11. Setup Alternative Monitoring Tool (e.g., Prometheus, Grafana)     |"
-    echo "| 12. Setup Vaultwarden                                                 |"
-    echo "| 13. Setup FileBrowser                                                 |"
-    echo "| 14. Setup Streaming (deluge + jellyfin)                               |"
-    echo "| 15. Setup Vanilla JS Website                                          |"
-    echo "| 16. Setup DDNS Updater                                                |"
-    echo "| 17. Setup SOTF (sons of the forest) Server                            |"
+    echo "|  8. Setup GitBucket                                                   |"
+    echo "|  9. Setup Matrix Server                                               |"
+    echo "| 10. Setup Alternative Monitoring Tool (e.g., Prometheus, Grafana)     |"
+    echo "| 11. Setup Vaultwarden                                                 |"
+    echo "| 12. Setup FileBrowser                                                 |"
+    echo "| 13. Setup Streaming (deluge + jellyfin)                               |"
+    echo "| 14. Setup Vanilla JS Website                                          |"
+    echo "| 15. Setup DDNS Updater                                                |"
+    echo "| 16. Setup SOTF (sons of the forest) Server                            |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"
@@ -95,6 +94,8 @@ setup_django(){
     sh scripts/setup/django_setup/django_setup.sh
 }
 
+
+
 main() {
     while true; do
         display_menu
@@ -102,18 +103,21 @@ main() {
         case $choice in
             0) setup_docker ;;
             1) setup_portainer ;;
-            2) setup_npm ;;
-            3) setup_filebrowser ;;
-            4) setup_nextcloud_aio ;;
-            5) setup_surrealdb ;;
-            6) setup_streaming ;;
-            7) setup_vanilla_js_website ;;
-            8) setup_ddns_updater ;;
-            9) setup_sotf ;;
-            10) setup_openvpn ;;
-            11) setup_zabbix ;;
-            12) setup_outline ;;
-            13) setup_django ;;
+            2) setup_traefik ;;
+            3) setup_npm ;;
+            4) setup_pihole ;;
+            5) setup_vpn ;;
+            6) setup_homeassistant ;;
+            7) setup_nextcloud_aio ;;
+            8) setup_gitbucket ;;
+            9) setup_matrix ;;
+            10) setup_monitoring ;;
+            11) setup_vaultwarden ;;
+            12) setup_filebrowser ;;
+            13) setup_streaming ;;
+            14) setup_vanilla_js_website ;;
+            15) setup_ddns_updater ;;
+            16) setup_sotf ;;
             q) clear && echo "Bye loser!" && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac
