@@ -64,6 +64,5 @@ EOF
 echo "The docker-compose.yml has been created successfully."
 
 docker compose up -d
-docker ps
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
