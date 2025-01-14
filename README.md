@@ -2,14 +2,26 @@
 
 Homelab install tailored for personal use, under fedora, but most probably compatible with a lot of distros
 
-## Quick start
+## Quick start - server
 
 ```sh
 rm -rf Fedora-server
 sudo dnf install git -y
 git clone https://github.com/trifoil/Fedora-server.git
 cd Fedora-server
-sudo sh main.sh
+sudo sh main_server.sh
+cd ..
+clear
+```
+
+## Quick start - fedora client
+
+```sh
+rm -rf Fedora-server
+sudo dnf install git -y
+git clone https://github.com/trifoil/Fedora-server.git
+cd Fedora-server
+sudo sh main_client.sh
 cd ..
 clear
 ```
