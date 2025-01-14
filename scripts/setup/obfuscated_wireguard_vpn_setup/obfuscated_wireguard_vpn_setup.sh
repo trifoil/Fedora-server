@@ -18,9 +18,16 @@ volume_data=$(prompt "Enter the volume for unobfuscated wireguard vpn" "/storage
 dnf install -y dnf-plugins-core -y
 dnf install wireguard-tools -y
 modprobe wireguard
-mkdir -p /path/to/wireguard/config
+mkdir -p "$volume_data"
+echo "$secret" > "$volume_data/wstunnel_secret"
 docker pull lscr.io/linuxserver/wireguard:latest
+
+# Generate the secret
+secret=$(openssl rand -base64 42)
+echo "Generated secret: $secret"
+
 cat <<EOF >docker-compose.yaml
+version: '3.8'
 
 services:
   wireguard:
@@ -51,7 +58,7 @@ services:
   wstunnel:
     image: erebe/wstunnel:latest
     container_name: wstunnel
-    command: server --restrict-http-upgrade-path-prefix "<secret>" --restrict-to wireguard:51820 wss://0.0.0.0:8888
+    command: server --restrict-http-upgrade-path-prefix "$secret" --restrict-to wireguard:51820 wss://0.0.0.0:8888
     ports:
       - 8888:8888
     restart: unless-stopped
@@ -59,8 +66,6 @@ services:
 networks:
   default:
     name: wireguard_network
-
-
 EOF
 
 docker compose up -d
