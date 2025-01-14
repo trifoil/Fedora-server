@@ -26,8 +26,9 @@ docker pull lscr.io/linuxserver/wireguard:latest
 secret=$(openssl rand -base64 42)
 echo "Generated secret: $secret"
 
+docker pull ghcr.io/erebe/wstunnel:latest
+
 cat <<EOF >docker-compose.yaml
-version: '3.8'
 
 services:
   wireguard:
