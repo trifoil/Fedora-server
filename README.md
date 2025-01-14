@@ -4,7 +4,7 @@ Homelab install tailored for personal use, under fedora, but most probably compa
 
 ## Quick start
 
-```
+```sh
 rm -rf Fedora-server
 sudo dnf install git -y
 git clone https://github.com/trifoil/Fedora-server.git
@@ -23,18 +23,18 @@ Installed from the script and ```required``` for the other services :
 Admin services :
 
 - [x] Portainer
-- [x]  Nginx Proxy Manager
-- [x]  DDNS updater
+- [x] Nginx Proxy Manager
+- [x] DDNS updater
 - [ ] Uptime-kuma
-- [x]  FileBrowser
+- [x] FileBrowser
 - [ ] OpenVPN
 
 User services :
 
-- [x]  Nextcloud AIO
-- [x]  Jellyfin
-- [x]  Deluge
-- [ ]  Gitbucket
+- [x] Nextcloud AIO
+- [x] Jellyfin
+- [x] Deluge
+- [ ] Gitbucket
 
 ## Sources
 
