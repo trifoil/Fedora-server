@@ -1,4 +1,4 @@
-# Fedora-server
+# Fedora-server ✇
 
 Homelab install tailored for personal use, under fedora, but most probably compatible with a lot of distros
 
