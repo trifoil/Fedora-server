@@ -22,7 +22,7 @@ web_password=$(prompt "Enter the webUI password" "password")
 
 recipient=$(prompt "Enter the recipient mail" "recipient@example.com")
 
-mkdir -p $volume_data/config.toml
+mkdir -p $volume_data
 
 cat <<EOF >$volume_data/config.toml
 
