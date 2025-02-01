@@ -31,6 +31,7 @@ display_menu() {
     echo "| 15. Setup Vanilla JS Website                                          |"
     echo "| 16. Setup DDNS Updater                                                |"
     echo "| 17. Setup SOTF (sons of the forest) Server                            |"
+    echo "| 18. Setup Dead Man's Switch                                            |"
     echo "|-----------------------------------------------------------------------|"
     echo "|  q. Exit                                                              |"
     echo "|-----------------------------------------------------------------------|"
@@ -109,6 +110,10 @@ setup_sotf(){
     sh scripts/setup/sotf_server_setup/sotf_server_setup.sh
 }
 
+setup_dead_man_switch(){
+    sh scripts/setup/dead_man_switch_setup/dead_man_switch_setup.sh
+}
+
 main() {
     while true; do
         display_menu
@@ -132,6 +137,7 @@ main() {
             15) setup_vanilla_js_website ;;
             16) setup_ddns_updater ;;
             17) setup_sotf ;;
+            18) setup_dead_man_switch ;;
             q) clear && echo "Bye loser!" && exit;;
             *) clear && echo "Invalid choice. Please enter a valid option." ;;
         esac

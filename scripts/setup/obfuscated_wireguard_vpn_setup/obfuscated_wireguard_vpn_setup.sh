@@ -13,7 +13,7 @@ prompt() {
   echo "${input:-$default_value}"
 }
 
-volume_data=$(prompt "Enter the volume for unobfuscated wireguard vpn" "/storage/vpn/wg_obfus")
+volume_data=$(prompt "Enter the volume for obfuscated wireguard vpn" "/storage/vpn/wg_obfus")
 
 dnf install -y dnf-plugins-core -y
 dnf install wireguard-tools -y
