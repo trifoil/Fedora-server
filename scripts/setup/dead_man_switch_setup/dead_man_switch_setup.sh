@@ -24,7 +24,7 @@ recipient=$(prompt "Enter the recipient mail" "recipient@example.com")
 
 mkdir -p $volume_data
 
-cat <<EOF >$volume_data/config.toml
+cat <<EOF >"$volume_data/config.toml"
 
 # Template config file for the Dead Man's Switch.
 # https://github.com/storopoli/dead-man-switch
