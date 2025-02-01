@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd "$(dirname "$0")"
 
 echo "The script will now install the dead man's switch"
@@ -19,13 +21,14 @@ smtp_server=$(prompt "Enter the smtp server" "smtp.gmail.com")
 smtp_port=$(prompt "Enter the smtp port" "587")
 message=$(prompt "Enter your message" "If you read this, I have not touched the server for a month")
 web_password=$(prompt "Enter the webUI password" "password")
-
 recipient=$(prompt "Enter the recipient mail" "recipient@example.com")
 
-mkdir -p $volume_data
+# Ensure the directory exists
+mkdir -p "$volume_data"
 
-cat <<EOF >"$volume_data/config.toml"
-
+# Create the config.toml file
+config_file="$volume_data/config.toml"
+cat <<EOF >"$config_file"
 # Template config file for the Dead Man's Switch.
 # https://github.com/storopoli/dead-man-switch
 
@@ -43,22 +46,21 @@ from = "$mail_username"
 timer_warning = 120
 timer_dead_man = 120
 web_password = "$web_password"
-
 EOF
 
-
-cat <<EOF >docker-compose.yaml
-
+# Create the docker-compose.yaml file
+compose_file="docker-compose.yaml"
+cat <<EOF >"$compose_file"
 services:
   dead_man_switch:
     image: ghcr.io/storopoli/dead_man_switch:latest
     ports:
       - "$port:3000"
     volumes:
-      - $volume_data/config.toml:/root/.config/deadman/config.toml
-
+      - $config_file:/root/.config/deadman/config.toml
 EOF
 
+# Start the Docker Compose service
 docker compose up -d
 
 read -n 1 -s -r -p "Done. Press any key to continue..."
